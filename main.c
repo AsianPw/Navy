@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Mon Jan 30 12:32:49 2017 Sadisadou
-** Last update Mon Jan 30 20:51:22 2017 Sadisadou
+** Last update Mon Jan 30 21:02:58 2017 Sadisadou
 */
 
 #include "navy.h"
@@ -22,7 +22,11 @@ int	main(int ac, char** av)
 {
   if (ac == 2 && !my_strcmp(av[1], "-h"))
     my_help();
-  else if (ac == 2 && !check_map(av[1]))
-    printf("yo\n");
+  else if (ac == 2)
+    ;//player1();
+  else if (ac == 3 && my_str_isnum(av[1]))
+    ;//player2();
+  else
+    my_strerror("Wrong numbers/types of params.\n");
   return (0);
 }

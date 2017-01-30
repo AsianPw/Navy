@@ -5,14 +5,14 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Mon Jan 30 12:18:17 2017 Brice Lang-Nguyen
-** Last update Mon Jan 30 14:49:01 2017 Sadisadou
+** Last update Mon Jan 30 21:01:06 2017 Sadisadou
 */
 
 #ifndef NAVY_H_
 #define NAVY_H_
 
 #include "lib.h"
-
+#include "../lib/my/my_printf.h"
 
 int	my_printf(const char*, ...);
 
