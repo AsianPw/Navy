@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 ** 
 ** Started on  Fri Jan 27 20:35:58 2017 Brice Lang-Nguyen
-** Last update Sun Jan 29 01:35:15 2017 Brice Lang-Nguyen
+** Last update Mon Jan 30 22:33:07 2017 Brice Lang-Nguyen
 */
 
 #include "lib.h"
@@ -25,5 +25,6 @@ char	*strcat(char *dest, char *src)
       j++;
       i++;
     }
+  dest[i] = '\0';
   return (dest);
 }
