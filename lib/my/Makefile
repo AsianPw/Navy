@@ -5,7 +5,7 @@
 ## Login   <Sadisadou@epitech.net>
 ##
 ## Started on  Sat Nov 12 18:57:01 2016 Bastien Guillaumat
-## Last update Mon Jan 30 14:41:48 2017 Sadisadou
+## Last update Mon Jan 30 15:26:26 2017 Sadisadou
 ##
 
 SRC	=	my_printf.c\
@@ -23,7 +23,8 @@ SRC	=	my_printf.c\
 		my_putstr.c\
 		flags1.c\
 		flags2.c\
-		flags3.c
+		flags3.c\
+		get_next_line.c
 
 OBJ	=	$(SRC:.c=.o)
 
