@@ -5,7 +5,7 @@
 ## Login   <brice.lang-nguyen@epitech.eu>
 ## 
 ## Started on  Fri Jan 27 20:40:45 2017 Brice Lang-Nguyen
-## Last update Mon Jan 30 12:36:38 2017 Brice Lang-Nguyen
+## Last update Mon Jan 30 14:05:40 2017 Brice Lang-Nguyen
 ##
 
 LIST	=	yes
@@ -32,7 +32,10 @@ SRCS	=	./src/error.c	\
 		./src/my_strncmp.c \
 		./src/my_strncpy.c \
 		./src/my_strstr.c \
-		./src/my_strcmp.c
+		./src/my_strcmp.c \
+		./src/my_str_to_wordtab.c \
+		./src/how_many_word.c \
+		./src/count_char.c
 
 OBJS	= $(SRCS:.c=.o)
 
