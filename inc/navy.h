@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Mon Jan 30 12:18:17 2017 Brice Lang-Nguyen
-** Last update Mon Jan 30 21:51:08 2017 Sadisadou
+** Last update Mon Jan 30 22:16:39 2017 Sadisadou
 */
 
 #ifndef NAVY_H_
@@ -16,5 +16,8 @@
 
 int	my_printf(const char*, ...);
 int	check_map(char*);
+void	my_help();
+int	player1(int);
+itn	player2(int);
 
 #endif
