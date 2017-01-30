@@ -5,9 +5,15 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Mon Jan 30 12:32:49 2017 Sadisadou
-** Last update Mon Jan 30 21:02:58 2017 Sadisadou
+** Last update Mon Jan 30 22:12:59 2017 Sadisadou
 */
 
+#include <unistd.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdlib.h>
 #include "navy.h"
 
 void	my_help()
@@ -18,12 +24,32 @@ void	my_help()
 positions of the ships.\n");
 }
 
+int	player1(int fd)
+{
+  char*	buff;
+
+  buff = malloc(sizeof(char) * 32);
+  read(fd, buff, 31);
+  buff[31] = '\0';
+  if (check_map(buff))
+    ;
+  free(buff);
+  return (0);
+}
+
 int	main(int ac, char** av)
 {
+  int	fd;
+
   if (ac == 2 && !my_strcmp(av[1], "-h"))
     my_help();
   else if (ac == 2)
-    ;//player1();
+    {
+      if ((fd = open(av[1], O_RDONLY)) == -1)
+	return (84);
+      else
+	player1(fd);
+    }
   else if (ac == 3 && my_str_isnum(av[1]))
     ;//player2();
   else

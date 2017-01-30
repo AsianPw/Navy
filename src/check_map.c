@@ -1,11 +1,11 @@
 /*
 ** check_map.c for navy in /home/brice/Documents/PSU/PSU_2016_navy/src
-** 
+**
 ** Made by Brice Lang-Nguyen
 ** Login   <brice.lang-nguyen@epitech.eu>
-** 
+**
 ** Started on  Mon Jan 30 15:58:12 2017 Brice Lang-Nguyen
-** Last update Mon Jan 30 20:02:32 2017 Brice Lang-Nguyen
+** Last update Mon Jan 30 21:59:30 2017 Sadisadou
 */
 
 #include "navy.h"
@@ -46,7 +46,7 @@ int	check_map(char *buffer)
 	return (false);
       else if ((i % 8 == 2 || i % 8 == 5) && !char_is_char(buffer[i]))
 	return (false);
-      else if ((i % 8 == 1 || i % 8 == 4) && buffer[i] != ':')
+      else if ((i % 8 == 1 || i % 8 == 4) && (buffer[i] != ':'))
 	return (false);
       i++;
     }
