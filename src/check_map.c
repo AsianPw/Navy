@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Mon Jan 30 15:58:12 2017 Brice Lang-Nguyen
-** Last update Mon Jan 30 22:22:39 2017 Brice Lang-Nguyen
+** Last update Mon Jan 30 22:29:29 2017 Brice Lang-Nguyen
 */
 
 #include "navy.h"
@@ -35,11 +35,18 @@ int	is_low_alpha(char c)
 
 int	check_map(char *buffer)
 {
-  if ((i % 8 == 0 || i % 8 == 3 || i % 8 == 6) && !char_is_num(buffer[i]))
-    return (false);
-  else if ((i % 8 == 2 || i % 8 == 5) && !char_is_char(buffer[i]))
-    return (false);
-  else if ((i % 8 == 1 || i % 8 == 4) && buffer[i] != ':')
-    return (false);
+  int	i;
+
+  i = 0;
+  while (buffer[i] != '\0')
+    {
+      if ((i % 8 == 0 || i % 8 == 3 || i % 8 == 6) && !char_is_num(buffer[i]))
+	return (false);
+      else if ((i % 8 == 2 || i % 8 == 5) && !char_is_char(buffer[i]))
+	return (false);
+      else if ((i % 8 == 1 || i % 8 == 4) && buffer[i] != ':')
+	return (false);
+      i++;
+    }
   return (true);
 }
