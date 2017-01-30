@@ -1,11 +1,11 @@
 /*
 ** lib.h for lib_epitech in /home/brice/Documents/lib_epitech_piscine
-** 
+**
 ** Made by Brice Lang-Nguyen
 ** Login   <brice.lang-nguyen@epitech.eu>
-** 
+**
 ** Started on  Fri Jan 27 18:40:36 2017 Brice Lang-Nguyen
-** Last update Mon Jan 30 14:22:14 2017 Brice Lang-Nguyen
+** Last update Mon Jan 30 21:04:49 2017 Sadisadou
 */
 
 #ifndef __LIB__
@@ -102,7 +102,7 @@ int	my_put_nbr(int nb);
 **  @param: str = string to display
 **  @return: nothing
 */
-int	my_putstr(char *str);
+void	my_putstr(char *str);
 
 /*-----------------------------------------------------------------------*/
 /*
@@ -191,7 +191,8 @@ int	count_char(char *str, char delim);
 **  @return: nb of word
 */
 int	how_many_word(char *str, char delim);
-  
+
 /*-----------------------------------------------------------------------*/
+int	my_str_isnum(char*);
 
 #endif /* __LIB__ */

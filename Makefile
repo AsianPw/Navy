@@ -5,7 +5,7 @@
 ## Login   <brice.lang-nguyen@epitech.eu>
 ##
 ## Started on  Mon Jan 30 12:15:14 2017 Brice Lang-Nguyen
-## Last update Mon Jan 30 15:41:45 2017 Brice Lang-Nguyen
+## Last update Mon Jan 30 21:52:09 2017 Sadisadou
 ##
 
 DEBUG	=	yes
@@ -17,6 +17,7 @@ CC	= 	gcc
 RM	= 	rm -f
 
 SRCS	=	main.c\
+		./src/check_map.c
 
 LIB	=	-L./lib -lmy -L./lib/my -lmy1
 

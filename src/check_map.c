@@ -1,11 +1,11 @@
 /*
 ** check_map.c for navy in /home/brice/Documents/PSU/PSU_2016_navy/src
-** 
+**
 ** Made by Brice Lang-Nguyen
 ** Login   <brice.lang-nguyen@epitech.eu>
-** 
+**
 ** Started on  Mon Jan 30 15:58:12 2017 Brice Lang-Nguyen
-** Last update Mon Jan 30 20:35:06 2017 Brice Lang-Nguyen
+** Last update Mon Jan 30 22:22:39 2017 Brice Lang-Nguyen
 */
 
 #include "navy.h"
@@ -35,8 +35,6 @@ int	is_low_alpha(char c)
 
 int	check_map(char *buffer)
 {
-  /*if (is_low_alpha(buffer[i]))
-    buffer[i] -= 32;*/
   if ((i % 8 == 0 || i % 8 == 3 || i % 8 == 6) && !char_is_num(buffer[i]))
     return (false);
   else if ((i % 8 == 2 || i % 8 == 5) && !char_is_char(buffer[i]))
