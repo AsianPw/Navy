@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 ** 
 ** Started on  Fri Jan 27 18:40:36 2017 Brice Lang-Nguyen
-** Last update Sun Jan 29 21:25:17 2017 Brice Lang-Nguyen
+** Last update Mon Jan 30 14:22:14 2017 Brice Lang-Nguyen
 */
 
 #ifndef __LIB__
@@ -165,6 +165,33 @@ void	my_putchar(char c);
  */
 void	error(char *msg);
 
+/*-----------------------------------------------------------------------*/
+/*
+**  create a 2D tab from a string
+**  @param: str = string to transform
+**  @param: delim = delim for create the tab
+**  @return: new tab 2D
+*/
+char	**my_str_to_wordtab(char *str, char delim);
+
+/*-----------------------------------------------------------------------*/
+/*
+**  calcul nb of char
+**  @param: str = string
+**  @param: delim = delim
+**  @return: nb of char
+*/
+int	count_char(char *str, char delim);
+
+/*-----------------------------------------------------------------------*/
+/*
+**  calcul the nb of word in a string
+**  @param: str = string
+**  @param: delim = delim
+**  @return: nb of word
+*/
+int	how_many_word(char *str, char delim);
+  
 /*-----------------------------------------------------------------------*/
 
 #endif /* __LIB__ */

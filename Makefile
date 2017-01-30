@@ -5,7 +5,7 @@
 ## Login   <brice.lang-nguyen@epitech.eu>
 ##
 ## Started on  Mon Jan 30 12:15:14 2017 Brice Lang-Nguyen
-## Last update Mon Jan 30 14:46:30 2017 Sadisadou
+## Last update Mon Jan 30 15:34:56 2017 Brice Lang-Nguyen
 ##
 
 DEBUG	=	yes
@@ -44,11 +44,13 @@ endif
 	@echo "\033[32;1mCompilation Done.\033[0m"
 clean:
 	@make -s -C lib/ clean
+	@make -s -C lib/my clean
 	@$(RM) $(OBJS)
 	@echo "\033[31;1mThe Object file are delete.\033[0m"
 
 fclean: clean
 	@make -s -C lib/ fclean
+	@make -s -C lib/my fclean
 	@$(RM) $(NAME)
 	@echo "\033[31;1m$(NAME) is delete.\033[0m"
 
