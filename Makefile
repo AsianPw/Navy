@@ -1,14 +1,14 @@
 ##
 ## Makefile for Navy in /home/brice/Documents/PSU/PSU_2016_navy
-## 
+##
 ## Made by Brice Lang-Nguyen
 ## Login   <brice.lang-nguyen@epitech.eu>
-## 
+##
 ## Started on  Mon Jan 30 12:15:14 2017 Brice Lang-Nguyen
-## Last update Mon Jan 30 12:46:12 2017 Brice Lang-Nguyen
+## Last update Mon Jan 30 14:46:30 2017 Sadisadou
 ##
 
-DEBUG	=	no
+DEBUG	=	yes
 
 NAME	=	navy
 
@@ -16,9 +16,9 @@ CC	= 	gcc
 
 RM	= 	rm -f
 
-SRCS	=
+SRCS	=	main.c\
 
-LIB	=	-L./lib -lmy
+LIB	=	-L./lib -lmy -L./lib/my -lmy1
 
 OBJS	= 	$(SRCS:.c=.o)
 
@@ -39,9 +39,9 @@ else
 	@echo "\033[32;1mGeneration in release mode\033[0m"
 endif
 	@make -s -C lib/ all
+	@make -s -C lib/my all
 	@$(CC) $^ -o $@ $(LIB)
 	@echo "\033[32;1mCompilation Done.\033[0m"
-
 clean:
 	@make -s -C lib/ clean
 	@$(RM) $(OBJS)
