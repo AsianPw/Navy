@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Fri Jan 27 18:40:36 2017 Brice Lang-Nguyen
-** Last update Mon Jan 30 21:04:49 2017 Sadisadou
+** Last update Mon Jan 30 22:35:25 2017 Brice Lang-Nguyen
 */
 
 #ifndef __LIB__
@@ -194,5 +194,7 @@ int	how_many_word(char *str, char delim);
 
 /*-----------------------------------------------------------------------*/
 int	my_str_isnum(char*);
+
+char	*strcat(char *, char *);
 
 #endif /* __LIB__ */
