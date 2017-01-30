@@ -5,7 +5,7 @@
 ## Login   <brice.lang-nguyen@epitech.eu>
 ## 
 ## Started on  Mon Jan 30 12:15:14 2017 Brice Lang-Nguyen
-## Last update Mon Jan 30 12:26:03 2017 Brice Lang-Nguyen
+## Last update Mon Jan 30 12:46:12 2017 Brice Lang-Nguyen
 ##
 
 DEBUG	=	no
@@ -16,7 +16,9 @@ CC	= 	gcc
 
 RM	= 	rm -f
 
-SRCS	= 
+SRCS	=
+
+LIB	=	-L./lib -lmy
 
 OBJS	= 	$(SRCS:.c=.o)
 
@@ -36,13 +38,19 @@ ifeq ($(DEBUG), yes)
 else
 	@echo "\033[32;1mGeneration in release mode\033[0m"
 endif
-	$(CC) $^ -o $@
+	@make -s -C lib/ all
+	@$(CC) $^ -o $@ $(LIB)
+	@echo "\033[32;1mCompilation Done.\033[0m"
 
 clean:
-	$(RM) $(OBJS)
+	@make -s -C lib/ clean
+	@$(RM) $(OBJS)
+	@echo "\033[31;1mThe Object file are delete.\033[0m"
 
 fclean: clean
-	$(RM) $(NAME)
+	@make -s -C lib/ fclean
+	@$(RM) $(NAME)
+	@echo "\033[31;1m$(NAME) is delete.\033[0m"
 
 re: fclean all
 
