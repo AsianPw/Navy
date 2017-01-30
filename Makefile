@@ -5,7 +5,7 @@
 ## Login   <brice.lang-nguyen@epitech.eu>
 ##
 ## Started on  Mon Jan 30 12:15:14 2017 Brice Lang-Nguyen
-## Last update Mon Jan 30 15:34:56 2017 Brice Lang-Nguyen
+## Last update Mon Jan 30 15:41:45 2017 Brice Lang-Nguyen
 ##
 
 DEBUG	=	yes
@@ -42,6 +42,7 @@ endif
 	@make -s -C lib/my all
 	@$(CC) $^ -o $@ $(LIB)
 	@echo "\033[32;1mCompilation Done.\033[0m"
+
 clean:
 	@make -s -C lib/ clean
 	@make -s -C lib/my clean
