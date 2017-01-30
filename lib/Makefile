@@ -1,11 +1,11 @@
 ##
 ## Makefile for lib_epitech in /home/brice/Documents/lib_epitech_piscine
-## 
+##
 ## Made by Brice Lang-Nguyen
 ## Login   <brice.lang-nguyen@epitech.eu>
-## 
+##
 ## Started on  Fri Jan 27 20:40:45 2017 Brice Lang-Nguyen
-## Last update Mon Jan 30 14:05:40 2017 Brice Lang-Nguyen
+## Last update Mon Jan 30 20:11:09 2017 Sadisadou
 ##
 
 LIST	=	yes
