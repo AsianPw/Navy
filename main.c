@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Mon Jan 30 12:32:49 2017 Sadisadou
-** Last update Mon Jan 30 22:16:01 2017 Sadisadou
+** Last update Tue Jan 31 17:34:41 2017 Sadisadou
 */
 
 #include <unistd.h>
@@ -28,11 +28,28 @@ int	player1(int fd)
 {
   char*	buff;
 
-  buff = malloc(sizeof(char) * 32);
+  if ((buff = malloc(sizeof(char) * 32)) == NULL)
+    return (84);
   read(fd, buff, 31);
   buff[31] = '\0';
   if (check_map(buff))
-    ;
+    game1(buff);;
+  free(buff);
+  return (0);
+}
+
+int	player2(int fd, char* pid)
+{
+  int	pid1;
+  char*	buff;
+
+  pid1 = my_getnbr(pid);
+  if ((buff = malloc(sizeof(char) * 32)) == NULL)
+    return (84);
+  read(fd, buff, 31);
+  buff[31] = '\0';
+  if (check_map(buff))
+    game2(buff, pid1);
   free(buff);
   return (0);
 }
@@ -45,14 +62,22 @@ int	main(int ac, char** av)
     my_help();
   else if (ac == 2)
     {
-      if ((fd = open(av[1], O_RDONLY)) == -1)
+      if (openerr(fd = open(av[1], O_RDONLY)) == -1)
 	return (84);
       else
 	player1(fd);
     }
   else if (ac == 3 && my_str_isnum(av[1]))
-    ;//player2();
+    {
+      if (openerr(fd = open(av[2], O_RDONLY)) == -1)
+	return (84);
+      else
+	player2(fd, av[1]);
+    }
   else
-    my_strerror("Wrong numbers/types of params.\n");
-  return (0);
+    {
+      my_strerror("Wrong numbers/types of params.\n");
+      return (84);
+    }
+    return (0);
 }
