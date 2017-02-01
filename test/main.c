@@ -10,6 +10,21 @@
 
 int	g_pid;
 
+
+int	char_is_char(char c)
+{
+  if (c > 64 && c < 91)
+    return (1);
+  return (0);
+}
+
+int	char_is_num(char c)
+{
+  if (c > 47 && c < 58)
+    return (1);
+  return (0);
+}
+
 void	handleSignal(int sig, siginfo_t *info, void *context)
 {
   if (sig == SIGUSR1)
@@ -58,6 +73,29 @@ int			connection(int argc, char **argv)
   return (0);
 }
 
+int	coord_to_int(char *coord)
+{
+  int	res;
+
+  res = 0;
+  if (my_strlen(coord) != 2)
+    return (-1);
+  //verif(alpha et num)
+  if (char_is_num(coord[0]) && char_is_char(coord[1]))
+    {
+      res = coord[0] - 48;
+      res += coord[1] - 65;
+    }
+  else if (char_is_char(coord[0]) && char_is_num(coord[1]))
+    {
+      res = coord[0] - 65;
+      res += (coord[1] - 48 - 1) * 8;
+    }
+  return (res);
+}
+
+
+
 char	*load_map(char *file)
 {
   int	fd;
@@ -86,6 +124,7 @@ int	main(int argc, char **argv)
 {
   char	*map;
   
+  printf("%i\n", coord_to_int("B2"));
   if (argc != 2 && argc != 3)
     return (84);
   if ((map = load_map(argv[argc - 1])) == NULL)

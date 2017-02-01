@@ -8,7 +8,7 @@ SRCS	= ./main.c
 
 OBJS	= $(SRCS:.c=.o)
 
-LIB = -L. -lgnl
+LIB = -L. -lgnl -L../lib/ -lmy 
 CFLAGS += -W -Wall -Wextra
 
 all: $(NAME)
