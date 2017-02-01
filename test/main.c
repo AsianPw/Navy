@@ -85,7 +85,7 @@ char	*load_map(char *file)
 int	main(int argc, char **argv)
 {
   char	*map;
-  
+
   if (argc != 2 && argc != 3)
     return (84);
   if ((map = load_map(argv[argc - 1])) == NULL)
