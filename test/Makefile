@@ -4,11 +4,11 @@ CC	= gcc
 
 RM	= rm -f
 
-SRCS	= ./main.c 
+SRCS	= ./main.c
 
 OBJS	= $(SRCS:.c=.o)
 
-LIB = -L. -lgnl -L../lib/ -lmy 
+LIB = -L../lib/my -lmy1 -L../lib/ -lmy
 CFLAGS += -W -Wall -Wextra
 
 all: $(NAME)
