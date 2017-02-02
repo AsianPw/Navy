@@ -5,20 +5,30 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Thu Feb  2 15:41:13 2017 Sadisadou
+** Last update Thu Feb  2 16:57:54 2017 Brice Lang-Nguyen
 */
 
 #include <signal.h>
 #include "navy.h"
 
-int	g_pid;
+int		ennemy_pid(int pid, int state)
+{
+  static int	my_pid;
+
+  if (state == 1)
+    return (my_pid);
+  else
+    my_pid = pid;
+  return (my_pid);
+}
 
 void	handleSignal(int sig, siginfo_t* info, void* context)
 {
   if (sig == SIGUSR1)
-    g_pid = info->si_pid;
+    ennemy_pid(info->si_pid, 0);
   if (context != NULL)
     return ;
+  return ;
 }
 
 int	the_game()
@@ -48,7 +58,7 @@ void	game1(char *buff)
   my_printf("waiting for ennemy connexion...\n");
   sigaction(SIGUSR1, &action, NULL);
   pause();
-  kill(g_pid, SIGUSR1);
+  kill(ennemy_pid(0, 1), SIGUSR1);
   my_printf("ennemy connected\n\n");
   the_game();
 }
