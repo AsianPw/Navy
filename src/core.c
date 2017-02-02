@@ -5,10 +5,10 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 14:40:53 2017 Sadisadou
-** Last update Thu Feb  2 17:22:50 2017 Sadisadou
+** Last update Thu Feb  2 21:12:03 2017 Sadisadou
 */
 
-//#include "navy.h"
+#include "navy.h"
 
 char	**create_map()
 {
@@ -47,7 +47,7 @@ void    map()
   my_printf(" |A B C D E F G H\n-+---------------\n");
   while (i < 8)
     {
-      printf("%d|%s\n", i+1, map[i]);
+      my_printf("%d|%s\n", i+1, map[i]);
       i++;
     }
 }

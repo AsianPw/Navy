@@ -5,13 +5,13 @@
 ** Login   <Sadisadou@epitech.net>
 **
 ** Started on  Tue Nov 15 23:30:29 2016 Bastien Guillaumat
-** Last update Mon Jan 30 21:04:53 2017 Sadisadou
+** Last update Thu Feb  2 21:17:39 2017 Sadisadou
 */
 
 #include <stdarg.h>
 #ifndef MY_PRINTF_H_
 #define MY_PRINTF_H_
-
+#include "get_next_line.h"
 #define FLAGS 13
 
 typedef void	(*fct)(va_list arg);
@@ -46,5 +46,6 @@ void	my_putstr_s(char*);
 int	my_put_bin(int);
 int	my_put_point(int);
 int	my_printf(const char*, ...);
+
 
 #endif /*MY_PRINTF_H_*/
