@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Thu Feb  2 14:07:44 2017 Sadisadou
+** Last update Thu Feb  2 15:41:13 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -21,36 +21,21 @@ void	handleSignal(int sig, siginfo_t* info, void* context)
     return ;
 }
 
-void	map()
-{
-  int	i;
-
-  i = 0;
-  my_printf(" |A B C D E F G H\n-+---------------\n");
-  while (i < 8)
-    {
-      my_printf("%d|%s", i+1, map[i]);
-      i++;
-    }
-}
-
-void	the_game()
+int	the_game()
 {
   char* s;
 
-  while (1)
-    {
-      my_printf("my positions:\n");
-      my_printf("ennemy's positions:\n");
-      my_printf("attack:  ");
-      while (s = get_next_line(0))
+  //while (1)
+  //{
+  aff1();
+      /*while (s = get_next_line(0))
 	{
 	  if (s)
 	    my_printf("wrong position\n");
 	  else
 	    my_printf("%s: %s", s, s);
-	}
-    }
+	    }*/
+      //}
 }
 
 void	game1(char *buff)
@@ -61,11 +46,11 @@ void	game1(char *buff)
   action.sa_sigaction = &handleSignal;
   action.sa_flags = SA_SIGINFO;
   my_printf("waiting for ennemy connexion...\n");
-  map();
   sigaction(SIGUSR1, &action, NULL);
   pause();
   kill(g_pid, SIGUSR1);
   my_printf("ennemy connected\n\n");
+  the_game();
 }
 
 void	game2(char* buff, int pid1)
@@ -79,4 +64,5 @@ void	game2(char* buff, int pid1)
   sigaction(SIGUSR1, &action, NULL);
   pause();
   my_printf("successfully connected\n\n");
+  the_game();
 }
