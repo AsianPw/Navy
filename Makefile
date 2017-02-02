@@ -5,7 +5,7 @@
 ## Login   <brice.lang-nguyen@epitech.eu>
 ##
 ## Started on  Mon Jan 30 12:15:14 2017 Brice Lang-Nguyen
-## Last update Tue Jan 31 17:31:59 2017 Sadisadou
+## Last update Thu Feb  2 14:43:52 2017 Sadisadou
 ##
 
 DEBUG	=	yes
@@ -19,7 +19,9 @@ RM	= 	rm -f
 SRCS	=	main.c\
 		game.c\
 		./src/check_map.c\
-		./src/errmsg.c
+		./src/errmsg.c\
+		./src/touch_miss.c\
+		./src/core.c
 
 LIB	=	-L./lib -lmy -L./lib/my -lmy1
 

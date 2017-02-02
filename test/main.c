@@ -41,11 +41,11 @@ int			connection(int argc, char **argv)
   action.sa_flags = SA_SIGINFO;
   if (argc == 2)
     {
-      printf("waiting for enemy connexion...\n");
+      printf("waiting for ennemy connexion...\n");
       sigaction(SIGUSR1, &action, NULL);
       pause();
       kill(g_pid, SIGUSR1);
-      printf("enemy connected\n\n");
+      printf("ennemy connected\n\n");
     }
   else if (argc == 3)
     {
@@ -85,7 +85,7 @@ char	*load_map(char *file)
 int	main(int argc, char **argv)
 {
   char	*map;
-  
+
   if (argc != 2 && argc != 3)
     return (84);
   if ((map = load_map(argv[argc - 1])) == NULL)
