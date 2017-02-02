@@ -5,13 +5,13 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Thu Feb  2 22:49:57 2017 Brice Lang-Nguyen
+** Last update Fri Feb  3 00:24:51 2017 Sadisadou
 */
 
 #include <signal.h>
 #include "navy.h"
 
-int		ennemy_pid(int pid, int state)
+int		enemy_pid(int pid, int state)
 {
   static int	my_pid;
 
@@ -25,7 +25,7 @@ int		ennemy_pid(int pid, int state)
 void	handleSignal(int sig, siginfo_t* info, void* context)
 {
   if (sig == SIGUSR1)
-    ennemy_pid(info->si_pid, 0);
+    enemy_pid(info->si_pid, 0);
   if (context != NULL)
     return ;
   return ;
@@ -65,14 +65,14 @@ int	the_game(int i)
       {
 	while (state)
 	  {
-	    my_printf("attack:  ");
+	    my_printf("\n\nattack:  ");
 	    s = get_next_line(0);
 	    if (!is_valid(s))
 	      my_printf("wrong position\n");
 	    else
 	      {
-		my_printf("%s:  ", s);
-		kill(ennemy_pid(0, 1), SIGUSR1);
+		my_printf("%s:  \n\n", s);
+		kill(enemy_pid(0, 1), SIGUSR1);
 		pause();
 		state = 0;
 	      }
@@ -81,10 +81,9 @@ int	the_game(int i)
       }
     else
       {
-	my_printf("\nwaiting for enemy's attack...\n");
-	
+	my_printf("\n\nwaiting for enemy's attack...\n");
 	pause();
-	kill(ennemy_pid(0, 1), SIGUSR1);
+	kill(enemy_pid(0, 1), SIGUSR1);
 	i = 0;
       }
   }
@@ -100,11 +99,11 @@ void	game1(char *buff)
   sigemptyset(&action.sa_mask);
   action.sa_sigaction = &handleSignal;
   action.sa_flags = SA_SIGINFO;
-  my_printf("waiting for ennemy connexion...\n");
+  my_printf("waiting for enemy connexion...\n");
   sigaction(SIGUSR1, &action, NULL);
   pause();
-  kill(ennemy_pid(0, 1), SIGUSR1);
-  my_printf("ennemy connected\n\n");
+  kill(enemy_pid(0, 1), SIGUSR1);
+  my_printf("enemy connected\n\n");
   the_game(i);
 }
 
