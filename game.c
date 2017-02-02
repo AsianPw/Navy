@@ -6,7 +6,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Thu Feb  2 22:06:32 2017 Brice Lang-Nguyen
+** Last update Thu Feb  2 22:16:11 2017 Brice Lang-Nguyen
 */
 
 #include <signal.h>
@@ -36,9 +36,17 @@ int	is_valid(char *entry)
 {
   if (my_strlen(entry) != 2)
     return (false);
-  else if (!char_is_num(entry[0]) || !char_is_char(entry[1]))
-    return (false);
-  else if(!char_is_char(entry[0]) || !char_is_num(entry[1]))
+  else if (char_is_num(entry[0]))
+    {
+      if (!char_is_char(entry[1]))
+	return (false);
+    }
+  else if(char_is_char(entry[0]))
+    {
+      if (!char_is_num(entry[1]))
+	return (false);
+    }
+  else
     return (false);
   return (true);
 }
@@ -58,7 +66,7 @@ int	the_game(int i)
 	  {
 	    my_printf("attack:  ");
 	    s = get_next_line(0);
-	    if (my_strlen(s) != 2 || (!char_is_char(s[0]) || !char_is_num(s[1])))
+	    if (!is_valid(s))
 	      my_printf("wrong position\n");
 	    else
 	      {
