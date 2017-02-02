@@ -6,7 +6,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Thu Feb  2 17:35:27 2017 Sadisadou
+** Last update Thu Feb  2 21:49:38 2017 Brice Lang-Nguyen
 */
 
 #include <signal.h>
@@ -32,26 +32,49 @@ void	handleSignal(int sig, siginfo_t* info, void* context)
   return ;
 }
 
+int	is_valid(char *entry)
+{
+  if (my_strlen(entry) != 2)
+    return (false);
+  else if (!char_is_num(entry[0]) || !char_is_char(entry[1]))
+    return (false);
+  else if(!char_is_char(entry[0]) || !char_is_num(entry[1]))
+    return (false);
+  return (true);
+}
+
 int	the_game(int i)
 {
   char* s;
+  int	state;
 
   while (1)
   {
     aff1();
+    state = 1;
     if (i == 0)
       {
-	while (1)
+	while (state)
 	  {
 	    my_printf("attack:  ");
 	    s = get_next_line(0);
-	    if (s)
+	    if (my_strlen(s) != 2 || (!char_is_char(s[0]) || !char_is_num(s[1])))
 	      my_printf("wrong position\n");
 	    else
-	      my_printf("%s:", s, s);
+	      {
+		my_printf("%s:  ", s);
+		kill(ennemy_pid(0, 1), SIGUSR1);
+		pause();
+		state = 0;
+	      }
 	  }
       }
-    pause();
+    else
+      {
+	my_printf("\nwaiting for enemy's attack...\n");
+	pause();
+	kill(ennemy_pid(0, 1), SIGUSR1);
+      }
   }
 }
 

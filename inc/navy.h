@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Mon Jan 30 12:18:17 2017 Brice Lang-Nguyen
-** Last update Thu Feb  2 21:18:23 2017 Sadisadou
+** Last update Thu Feb  2 21:31:34 2017 Brice Lang-Nguyen
 */
 
 #ifndef NAVY_H_
@@ -34,5 +34,7 @@ int	ennemy_pid(int, int);
 void	handleSignal(int, siginfo_t*, void*);
 int	the_game(int);
 void	aff1();
+int	char_is_num(char c);
+int	char_is_char(char c);
 
 #endif
