@@ -1,4 +1,3 @@
-
 /*
 ** game.c for game in /home/sadisadou/PSU/PSU_2016_navy
 **
@@ -6,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Thu Feb  2 22:16:11 2017 Brice Lang-Nguyen
+** Last update Thu Feb  2 22:49:57 2017 Brice Lang-Nguyen
 */
 
 #include <signal.h>
@@ -40,8 +39,10 @@ int	is_valid(char *entry)
     {
       if (!char_is_char(entry[1]))
 	return (false);
+      if (!is_low_alpha(entry[1]))
+	return (false);
     }
-  else if(char_is_char(entry[0]))
+  else if((char_is_char(entry[0])) || (is_low_alpha(entry[0])))
     {
       if (!char_is_num(entry[1]))
 	return (false);
@@ -76,14 +77,15 @@ int	the_game(int i)
 		state = 0;
 	      }
 	  }
-	i++;
+	i = 1;
       }
     else
       {
 	my_printf("\nwaiting for enemy's attack...\n");
+	
 	pause();
 	kill(ennemy_pid(0, 1), SIGUSR1);
-	i--;
+	i = 0;
       }
   }
 }
