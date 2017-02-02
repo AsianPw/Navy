@@ -6,7 +6,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Thu Feb  2 21:49:38 2017 Brice Lang-Nguyen
+** Last update Thu Feb  2 22:06:32 2017 Brice Lang-Nguyen
 */
 
 #include <signal.h>
@@ -68,12 +68,14 @@ int	the_game(int i)
 		state = 0;
 	      }
 	  }
+	i++;
       }
     else
       {
 	my_printf("\nwaiting for enemy's attack...\n");
 	pause();
 	kill(ennemy_pid(0, 1), SIGUSR1);
+	i--;
       }
   }
 }
