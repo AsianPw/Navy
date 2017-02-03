@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 14:40:53 2017 Sadisadou
-** Last update Fri Feb  3 15:39:20 2017 Sadisadou
+** Last update Fri Feb  3 15:45:00 2017 Sadisadou
 */
 
 #include "navy.h"
@@ -76,6 +76,6 @@ void	aff1()
 {
   my_printf("my positions:\n");
   map();
-  my_printf("\n\nenemy's positions:\n");
+  my_printf("enemy's positions:\n");
   map();
 }

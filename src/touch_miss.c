@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 13:25:37 2017 Sadisadou
-** Last update Fri Feb  3 15:23:09 2017 Sadisadou
+** Last update Fri Feb  3 15:44:40 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -42,7 +42,7 @@ void	attacker2(int state)
   pause();
   while (state)
     {
-      my_printf("attack:   ");
+      my_printf("attack:  ",);
       s = get_next_line(0);
       if (!is_valid(s))
 	my_printf("wrong positions\n");
