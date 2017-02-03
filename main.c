@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Mon Jan 30 12:32:49 2017 Sadisadou
-** Last update Tue Jan 31 17:34:41 2017 Sadisadou
+** Last update Fri Feb  3 19:35:29 2017 Sadisadou
 */
 
 #include <unistd.h>
@@ -30,10 +30,19 @@ int	player1(int fd)
 
   if ((buff = malloc(sizeof(char) * 32)) == NULL)
     return (84);
-  read(fd, buff, 31);
+  if (read(fd, buff, 31) == -1)
+    {
+      my_strerror("Can't read pos file.\n");
+      return (84);
+    }
   buff[31] = '\0';
   if (check_map(buff))
-    game1(buff);;
+    game1(buff);
+  else
+    {
+      my_strerror("Error with the pos file.\n");
+      return (84);
+    }
   free(buff);
   return (0);
 }
@@ -46,10 +55,19 @@ int	player2(int fd, char* pid)
   pid1 = my_getnbr(pid);
   if ((buff = malloc(sizeof(char) * 32)) == NULL)
     return (84);
-  read(fd, buff, 31);
+  if (read(fd, buff, 31) == -1)
+    {
+      my_strerror("Can't read pos file.\n");
+      return (84);
+    }
   buff[31] = '\0';
   if (check_map(buff))
     game2(buff, pid1);
+  else
+    {
+      my_strerror("Error with the pos file.\n");
+      return (84);
+    }
   free(buff);
   return (0);
 }

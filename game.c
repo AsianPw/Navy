@@ -5,11 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-<<<<<<< HEAD
-** Last update Fri Feb  3 15:32:14 2017 Sadisadou
-=======
-** Last update Fri Feb  3 14:19:58 2017 Brice Lang-Nguyen
->>>>>>> 62ba98481d362074d8b2bf53fbbee79345cf737c
+** Last update Fri Feb  3 19:45:44 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -37,7 +33,6 @@ void	handleSignal(int sig, siginfo_t* info, void* context)
 
 int	the_game(int i)
 {
-  char* s;
   int	state;
 
   while (1)

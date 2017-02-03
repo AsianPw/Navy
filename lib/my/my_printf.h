@@ -5,7 +5,7 @@
 ** Login   <Sadisadou@epitech.net>
 **
 ** Started on  Tue Nov 15 23:30:29 2016 Bastien Guillaumat
-** Last update Thu Feb  2 21:17:39 2017 Sadisadou
+** Last update Fri Feb  3 19:28:23 2017 Sadisadou
 */
 
 #include <stdarg.h>
@@ -46,6 +46,7 @@ void	my_putstr_s(char*);
 int	my_put_bin(int);
 int	my_put_point(int);
 int	my_printf(const char*, ...);
-
+void	my_free(char**);
+char**	my_str_to_wordtab(char*, char);
 
 #endif /*MY_PRINTF_H_*/
