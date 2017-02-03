@@ -5,7 +5,11 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
+<<<<<<< HEAD
+** Last update Fri Feb  3 15:32:14 2017 Sadisadou
+=======
 ** Last update Fri Feb  3 14:19:58 2017 Brice Lang-Nguyen
+>>>>>>> 62ba98481d362074d8b2bf53fbbee79345cf737c
 */
 
 #include <signal.h>
@@ -31,27 +35,6 @@ void	handleSignal(int sig, siginfo_t* info, void* context)
   return ;
 }
 
-int	is_valid(char *entry)
-{
-  if (my_strlen(entry) != 2)
-    return (false);
-  else if (char_is_num(entry[0]))
-    {
-      if (!char_is_char(entry[1]))
-	return (false);
-      else if (!is_low_alpha(entry[1]))
-	return (false);
-      return (true);
-    }
-  else if((char_is_char(entry[0])) || (is_low_alpha(entry[0])))
-    {
-      if (!char_is_num(entry[1]))
-	return (false);
-      return (true);
-    }
-  return (false);
-}
-
 int	the_game(int i)
 {
   char* s;
@@ -63,28 +46,13 @@ int	the_game(int i)
     state = 1;
     if (i == 0)
       {
-	while (state)
-	  {
-	    my_printf("\n\nattack:  ");
-	    s = get_next_line(0);
-	    if (!is_valid(s))
-	      my_printf("wrong position\n");
-	    else
-	      {
-		my_printf("%s:  \n\n", s);
-		kill(enemy_pid(0, 1), SIGUSR1);
-		pause();
-		state = 0;
-	      }
-	  }
-	i = 1;
+	attacker1(state);
+	i = 0;
       }
     else
       {
-	my_printf("\n\nwaiting for enemy's attack...\n");
-	pause();
-	kill(enemy_pid(0, 1), SIGUSR1);
-	i = 0;
+	attacker2(state);
+	i = 1;
       }
   }
 }
