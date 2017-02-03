@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Mon Jan 30 12:32:49 2017 Sadisadou
-** Last update Fri Feb  3 19:35:29 2017 Sadisadou
+** Last update Sat Feb  4 00:39:35 2017 Sadisadou
 */
 
 #include <unistd.h>
@@ -37,7 +37,7 @@ int	player1(int fd)
     }
   buff[31] = '\0';
   if (check_map(buff))
-    game1(buff);
+      game1(buff);
   else
     {
       my_strerror("Error with the pos file.\n");
