@@ -1,13 +1,14 @@
 /*
-1;4205;0c** crypt.c for navy in /home/brice/Documents/PSU/PSU_2016_navy/test/binary
+** crypt.c for navy in /home/brice/Documents/PSU/PSU_2016_navy/test/binary
 ** 
 ** Made by Brice Lang-Nguyen
 ** Login   <brice.lang-nguyen@epitech.eu>
 ** 
 ** Started on  Thu Feb  2 22:50:44 2017 Brice Lang-Nguyen
-** Last update Fri Feb  3 16:11:52 2017 Brice Lang-Nguyen
+** Last update Fri Feb  3 17:05:48 2017 Brice Lang-Nguyen
 */
 
+#include <unistd.h>
 #include <signal.h>
 #include <stdlib.h>
 
@@ -88,6 +89,9 @@ int	main(int argc, char **argv)
   int	i;
 
   action.sa_sigaction = &handler_sender;
+  sigaction(SIGUSR1, &action, NULL);
+  kill(atoi(argv[1]), SIGUSR1);
+  pause();
   str = bin_crypt(19);
   i = 0;
   while (str[i] != '\0')
@@ -96,7 +100,6 @@ int	main(int argc, char **argv)
 	kill(atoi(argv[1]), SIGUSR1);
       else if (str[i] == '1')
 	kill(atoi(argv[1]), SIGUSR2);
-      sigaction(SIGUSR1, &action, NULL);
       pause();
       i++;
     }

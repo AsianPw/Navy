@@ -5,15 +5,13 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 ** 
 ** Started on  Thu Feb  2 15:33:51 2017 Brice Lang-Nguyen
-** Last update Fri Feb  3 16:07:30 2017 Brice Lang-Nguyen
+** Last update Fri Feb  3 17:05:19 2017 Brice Lang-Nguyen
 */
 
 #include <unistd.h>
 #include <signal.h>
 #include <stdlib.h>
 #include <stdio.h>
-
-int	g_pid_e;
 
 char		*increm(char c, int stat)
 {
@@ -34,9 +32,20 @@ char		*increm(char c, int stat)
   return (tab);
 }
 
+int	enemy_pid(int pid, int state)
+{
+  static int	my_pid;
+
+  if (state == 1)
+    return (my_pid);
+  else
+    my_pid = pid;
+  return (my_pid);
+}
+
+
 void	handler(int signal, siginfo_t *info, void *context)
 {
-  g_pid_e = info->si_pid;
   if (signal == SIGUSR1)
     increm('0', 0);
   else if (signal == SIGUSR2)
@@ -44,7 +53,7 @@ void	handler(int signal, siginfo_t *info, void *context)
 }
 
 
-int			main(int argc, char **argv)
+int			main3()
 {
   struct sigaction	action;
   int	i;
@@ -56,9 +65,29 @@ int			main(int argc, char **argv)
   while (i < 19)
     {
       pause();
-      kill(g_pid_e, SIGUSR1);
+      kill(enemy_pid(0, 1), SIGUSR1);
       i++;
     }
   printf("%s", increm(0, 1));
   return (EXIT_SUCCESS);
+}
+
+void	handleSignal(int sig, siginfo_t *info, void *context)
+{
+  if (sig == SIGUSR1)
+    enemy_pid(info->si_pid, 0);
+}
+
+
+int	main()
+{
+  struct sigaction	action;
+
+  action.sa_sigaction = &handleSignal;
+  action.sa_flags = SA_SIGINFO;
+  sigaction(SIGUSR1, &action, NULL);
+  pause();
+  kill(enemy_pid(0, 1), SIGUSR1);
+  main3();
+  return (0);
 }
