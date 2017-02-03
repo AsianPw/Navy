@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Fri Feb  3 00:24:51 2017 Sadisadou
+** Last update Fri Feb  3 14:19:58 2017 Brice Lang-Nguyen
 */
 
 #include <signal.h>
@@ -39,17 +39,17 @@ int	is_valid(char *entry)
     {
       if (!char_is_char(entry[1]))
 	return (false);
-      if (!is_low_alpha(entry[1]))
+      else if (!is_low_alpha(entry[1]))
 	return (false);
+      return (true);
     }
   else if((char_is_char(entry[0])) || (is_low_alpha(entry[0])))
     {
       if (!char_is_num(entry[1]))
 	return (false);
+      return (true);
     }
-  else
-    return (false);
-  return (true);
+  return (false);
 }
 
 int	the_game(int i)
