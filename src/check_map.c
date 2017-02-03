@@ -5,14 +5,14 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Mon Jan 30 15:58:12 2017 Brice Lang-Nguyen
-** Last update Mon Jan 30 23:15:56 2017 Brice Lang-Nguyen
+** Last update Fri Feb  3 14:17:36 2017 Brice Lang-Nguyen
 */
 
 #include "navy.h"
 
 int	char_is_num(char c)
 {
-  if (c > 47 && c < 58)
+  if ((c >= 48 && c <= 56))
     return (true);
   return (false);
 }
@@ -20,7 +20,7 @@ int	char_is_num(char c)
 
 int	char_is_char(char c)
 {
-  if (c > 64 && c < 91)
+  if ((c > 64 && c <= 72))
     return (true);
   return (false);
 }
@@ -28,7 +28,7 @@ int	char_is_char(char c)
 
 int	is_low_alpha(char c)
 {
-  if ((c > 96 && c < 123))
+  if ((c > 96 && c <= 104))
     return (true);
   return (false);
 }

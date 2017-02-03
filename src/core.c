@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 14:40:53 2017 Sadisadou
-** Last update Fri Feb  3 15:27:53 2017 Sadisadou
+** Last update Fri Feb  3 15:31:14 2017 Sadisadou
 */
 
 #include "navy.h"
@@ -14,16 +14,16 @@ int	is_valid(char *entry)
 {
   if (my_strlen(entry) != 2)
     return (false);
-  else if (char_is_num(entry[0]))
+  else if (!char_is_num(entry[0]))
     {
-      if (char_is_char(entry[1]))
+      if (!char_is_char(entry[1]))
 	return (false);
       if (!is_low_alpha(entry[1]))
 	return (false);
     }
   else if ((char_is_char(entry[0])) || (is_low_alpha(entry[0])))
     {
-      if (char_is_num(entry[1]))
+      if (!char_is_num(entry[1]))
 	return (false);
     }
   else

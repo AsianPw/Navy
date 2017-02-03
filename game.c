@@ -5,7 +5,11 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
+<<<<<<< HEAD
 ** Last update Fri Feb  3 15:02:41 2017 Sadisadou
+=======
+** Last update Fri Feb  3 14:19:58 2017 Brice Lang-Nguyen
+>>>>>>> 62ba98481d362074d8b2bf53fbbee79345cf737c
 */
 
 #include <signal.h>
@@ -31,6 +35,30 @@ void	handleSignal(int sig, siginfo_t* info, void* context)
   return ;
 }
 
+<<<<<<< HEAD
+=======
+int	is_valid(char *entry)
+{
+  if (my_strlen(entry) != 2)
+    return (false);
+  else if (char_is_num(entry[0]))
+    {
+      if (!char_is_char(entry[1]))
+	return (false);
+      else if (!is_low_alpha(entry[1]))
+	return (false);
+      return (true);
+    }
+  else if((char_is_char(entry[0])) || (is_low_alpha(entry[0])))
+    {
+      if (!char_is_num(entry[1]))
+	return (false);
+      return (true);
+    }
+  return (false);
+}
+
+>>>>>>> 62ba98481d362074d8b2bf53fbbee79345cf737c
 int	the_game(int i)
 {
   char* s;

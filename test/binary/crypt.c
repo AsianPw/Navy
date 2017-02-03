@@ -5,12 +5,45 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 ** 
 ** Started on  Thu Feb  2 22:50:44 2017 Brice Lang-Nguyen
-** Last update Thu Feb  2 23:20:42 2017 Brice Lang-Nguyen
+** Last update Fri Feb  3 15:28:46 2017 Brice Lang-Nguyen
 */
 
-int	int_to_bin(int nb)
+#include <signal.h>
+#include <stdlib.h>
+
+int	my_strlen(char *str)
 {
-  char	str[20];
+  int	i;
+
+  i = 0;
+  while (str[i] != '\0')
+    i++;
+  return (i);
+}
+
+
+char	*my_revstr(char *str)
+{
+  char	tmp;
+  int	i;
+  int	j;
+
+  i = 0;
+  j = my_strlen(str) - 1;
+  while (i <= j)
+    {
+      tmp = str[i];
+      str[i] = str[j];
+      str[j] = tmp;
+      i++;
+      j--;
+    }
+  return (str);
+}
+
+
+char	*int_to_bin(int nb, char *str)
+{
   int	rem;
   int	bin;
   int	i;
@@ -27,22 +60,36 @@ int	int_to_bin(int nb)
       str[j++] = rem + '0';
       i *= 10;
     }
-  //revt_str
-  printf("str: %s\n", str);
-  return (bin);
+  return (str);
 }
+
 
 char	*bin_crypt(int nb)
 {
-  int	bin;
-  
-  bin = int_to_bin(nb);
-  printf("%i\n", bin);
-  return (0);
+  char	*str;
+
+  if ((str = malloc(sizeof(char) * 10)) == NULL)
+    return (NULL);
+  int_to_bin(nb, str);
+  str = my_revstr(str);
+  return (str);
 }
 
 int	main(int argc, char **argv)
 {
-  bin_crypt(19);
+  struct sigaction	action;
+  char	*str;
+  int	i;
+  
+  action.sa_sigaction = &handler_receive;
+  str = bin_crypt(19);
+  i = 0;
+  while (str[i] != "\0")
+    {
+      if (str[i] == '0')
+	kill(atoi(argv[1]), SIGUSR1);
+      else if (str[i] != '1')
+	kill(atoi(argv[1]), SIGUSR2);
+    }
   return (0);
 }
