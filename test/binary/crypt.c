@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 ** 
 ** Started on  Thu Feb  2 22:50:44 2017 Brice Lang-Nguyen
-** Last update Fri Feb  3 17:05:48 2017 Brice Lang-Nguyen
+** Last update Sat Feb  4 15:49:56 2017 Brice Lang-Nguyen
 */
 
 #include <unistd.h>
@@ -94,6 +94,7 @@ int	main(int argc, char **argv)
   pause();
   str = bin_crypt(19);
   i = 0;
+  printf("str: %i\n", str);
   while (str[i] != '\0')
     {
       if (str[i] == '0')
@@ -103,5 +104,6 @@ int	main(int argc, char **argv)
       pause();
       i++;
     }
+  printf("end\n");
   return (0);
 }

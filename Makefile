@@ -5,7 +5,7 @@
 ## Login   <brice.lang-nguyen@epitech.eu>
 ##
 ## Started on  Mon Jan 30 12:15:14 2017 Brice Lang-Nguyen
-## Last update Fri Feb  3 19:36:28 2017 Sadisadou
+## Last update Sat Feb  4 16:20:42 2017 Brice Lang-Nguyen
 ##
 
 DEBUG	=	yes
@@ -22,7 +22,9 @@ SRCS	=	main.c\
 		./src/errmsg.c\
 		./src/touch_miss.c\
 		./src/core.c\
-		./src/map.c
+		./src/map.c \
+		./src/send_coord.c \
+		./src/receive_coord.c
 
 LIB	=	-L./lib -lmy -L./lib/my -lmy1
 

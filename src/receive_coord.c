@@ -1,17 +1,18 @@
 /*
-** test.c for test in /home/brice/Documents/PSU/PSU_2016_navy_bootstrap/task03
+** receive_coord.c for navy in /home/brice/Documents/PSU/PSU_2016_navy/src
 ** 
 ** Made by Brice Lang-Nguyen
 ** Login   <brice.lang-nguyen@epitech.eu>
 ** 
-** Started on  Thu Feb  2 15:33:51 2017 Brice Lang-Nguyen
-** Last update Fri Feb  3 19:54:32 2017 Brice Lang-Nguyen
+** Started on  Sat Feb  4 16:09:54 2017 Brice Lang-Nguyen
+** Last update Sat Feb  4 17:04:24 2017 Brice Lang-Nguyen
 */
+
 
 #include <unistd.h>
 #include <signal.h>
 #include <stdlib.h>
-#include <stdio.h>
+#include "navy.h"
 
 char		*increm(char c, int stat)
 {
@@ -31,17 +32,6 @@ char		*increm(char c, int stat)
   return (tab);
 }
 
-int	enemy_pid(int pid, int state)
-{
-  static int	my_pid;
-
-  if (state == 1)
-    return (my_pid);
-  else
-    my_pid = pid;
-  return (my_pid);
-}
-
 
 void	handler(int signal, siginfo_t *info, void *context)
 {
@@ -49,9 +39,12 @@ void	handler(int signal, siginfo_t *info, void *context)
     increm('0', 0);
   else if (signal == SIGUSR2)
     increm('1', 0);
+  if (info->si_pid != enemy_pid(0, 1) || context != NULL)
+    return ;
+  return ;
 }
 
-int	char_to_int(char *str)
+int	binchar_to_int(char *str)
 {
   int	i;
   int	dec;
@@ -68,44 +61,22 @@ int	char_to_int(char *str)
 }
 
 
-int			main3()
+int			receive_coord()
 {
   struct sigaction	action;
-  int	i;
-  int	res;
+  int			i;
+  int			res;
 
   action.sa_sigaction = &handler;
   sigaction(SIGUSR1, &action, NULL);
   sigaction(SIGUSR2, &action, NULL);
   i = 0;
-  while (i < 19)
+  while (i < 5)
     {
       pause();
       kill(enemy_pid(0, 1), SIGUSR1);
       i++;
     }
-  res = char_to_int(increm(0, 1));
-  printf("res : %i\n", res);
-  return (EXIT_SUCCESS);
-}
-
-void	handleSignal(int sig, siginfo_t *info, void *context)
-{
-  if (sig == SIGUSR1)
-    enemy_pid(info->si_pid, 0);
-}
-
-
-int	main()
-{
-  struct sigaction	action;
-
-  printf("my_pid: %i\n", getpid());
-  action.sa_sigaction = &handleSignal;
-  action.sa_flags = SA_SIGINFO;
-  sigaction(SIGUSR1, &action, NULL);
-  pause();
-  kill(enemy_pid(0, 1), SIGUSR1);
-  main3();
-  return (0);
+  res = binchar_to_int(increm(0, 1));
+  return (res);
 }
