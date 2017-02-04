@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Sat Feb  4 00:49:17 2017 Sadisadou
+** Last update Sat Feb  4 17:31:26 2017 Brice Lang-Nguyen
 */
 
 #include <signal.h>
@@ -74,8 +74,10 @@ void	game2(char* buff, int pid1)
 {
   struct sigaction	action;
   int			i;
+  char			*map;
 
   i = 1;
+  map = load_map(buff);
   my_printf("my_pid:  %d\n", getpid());
   sigemptyset(&action.sa_mask);
   action.sa_sigaction = &handleSignal;
