@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Sat Feb  4 17:31:26 2017 Brice Lang-Nguyen
+** Last update Sun Feb  5 18:19:17 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -62,7 +62,7 @@ void	game1(char *buff)
   sigemptyset(&action.sa_mask);
   action.sa_sigaction = &handleSignal;
   action.sa_flags = SA_SIGINFO;
-  my_printf("waiting for enemy connexion...\n");
+  my_printf("waiting for enemy connexion...\n\n");
   sigaction(SIGUSR1, &action, NULL);
   pause();
   kill(enemy_pid(0, 1), SIGUSR1);
@@ -77,7 +77,7 @@ void	game2(char* buff, int pid1)
   char			*map;
 
   i = 1;
-  map = load_map(buff);
+  //map = load_map(buff);
   my_printf("my_pid:  %d\n", getpid());
   sigemptyset(&action.sa_mask);
   action.sa_sigaction = &handleSignal;
