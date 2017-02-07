@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 13:25:37 2017 Sadisadou
-** Last update Tue Feb  7 19:13:15 2017 Sadisadou
+** Last update Tue Feb  7 20:17:31 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -41,9 +41,8 @@ void	ignore(int sig, siginfo_t *info, void *context)
 {
   if (sig == SIGUSR1 || sig == SIGUSR2)
     return ;
-  if (context != NULL)// || info == NULL)
+  else if (context != NULL)// || info == NULL)
     return ;
-  return ;
 }
 
 
@@ -59,7 +58,7 @@ void	attacker2(int state)
   sigaction(SIGUSR2, &action, NULL);
   pause();
   receive_coord();
-  kill(enemy_pid(0, 1), SIGUSR1);
+  //kill(enemy_pid(0, 1), SIGUSR1);
   while (state)
     {
       my_printf("attack:  ");

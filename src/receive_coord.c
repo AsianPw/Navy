@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Sat Feb  4 16:09:54 2017 Brice Lang-Nguyen
-** Last update Tue Feb  7 19:11:59 2017 Sadisadou
+** Last update Tue Feb  7 20:17:00 2017 Sadisadou
 */
 
 
@@ -41,9 +41,8 @@ void	handler(int signal, siginfo_t *info, void *context)
     increm('0', 0);
   else if (signal == SIGUSR2)
     increm('1', 0);
-  if (info->si_pid != enemy_pid(0, 1) || context != NULL)
+  else if (info->si_pid != enemy_pid(0, 1) || context != NULL)
     return ;
-  return ;
 }
 
 int	binchar_to_int(char *str)
@@ -80,9 +79,8 @@ int	receive_coord()
   i = 0;
   increm(0, 1);
   kill(enemy_pid(0, 1), SIGUSR1);
-  while (i < 8);
+  while (i < 7)
     {
-      printf("%i\n", i);
       pause();
       kill(enemy_pid(0, 1), SIGUSR1);
       i++;
