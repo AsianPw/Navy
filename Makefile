@@ -5,7 +5,7 @@
 ## Login   <brice.lang-nguyen@epitech.eu>
 ##
 ## Started on  Mon Jan 30 12:15:14 2017 Brice Lang-Nguyen
-## Last update Sun Feb  5 14:47:05 2017 Sadisadou
+## Last update Mon Feb  6 22:08:48 2017 Brice Lang-Nguyen
 ##
 
 DEBUG	=	yes
@@ -18,13 +18,13 @@ RM	= 	rm -f
 
 SRCS	=	main.c\
 		game.c\
-		./src/check_map.c\
-		./src/errmsg.c\
-		./src/touch_miss.c\
-		./src/core.c\
-		./src/map.c \
-		./src/send_coord.c \
-		./src/receive_coord.c
+		src/check_map.c\
+		src/errmsg.c\
+		src/touch_miss.c\
+		src/core.c\
+		src/map.c \
+		src/send_coord.c \
+		src/receive_coord.c
 
 LIB	=	-L./lib -lmy -L./lib/my -lmy1
 
@@ -48,20 +48,17 @@ else
 endif
 	@make -s -C lib/ all
 	@make -s -C lib/my all
-	@$(CC) $^ -o $@ $(LIB)
-	@echo "\033[32;1mCompilation Done.\033[0m"
+	@$(CC) $^ -o $@ $(LIB) && echo "\033[32;1mCompilation Done.\033[0m" || echo "\033[31;1mGénération échouée\033[0m"
 
 clean:
 	@make -s -C lib/ clean
 	@make -s -C lib/my clean
-	@$(RM) $(OBJS)
-	@echo "\033[31;1mThe Object file are delete.\033[0m"
+	@$(RM) $(OBJS) && echo "\033[31;1mThe Object file are delete.\033[0m"
 
 fclean: clean
 	@make -s -C lib/ fclean
 	@make -s -C lib/my fclean
-	@$(RM) $(NAME)
-	@echo "\033[31;1m$(NAME) is delete.\033[0m"
+	@$(RM) $(NAME) && echo "\033[31;1m$(NAME) is delete.\033[0m"
 
 re: fclean all
 

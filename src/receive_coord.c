@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 ** 
 ** Started on  Sat Feb  4 16:09:54 2017 Brice Lang-Nguyen
-** Last update Sat Feb  4 17:04:24 2017 Brice Lang-Nguyen
+** Last update Mon Feb  6 21:38:59 2017 Brice Lang-Nguyen
 */
 
 
@@ -29,6 +29,7 @@ char		*increm(char c, int stat)
 	tab[j++] = '\0';
       i = 0;
     }
+  my_printf("%s\n", tab);
   return (tab);
 }
 
@@ -67,11 +68,12 @@ int			receive_coord()
   int			i;
   int			res;
 
+  sigemptyset(&action.sa_mask);
   action.sa_sigaction = &handler;
   sigaction(SIGUSR1, &action, NULL);
   sigaction(SIGUSR2, &action, NULL);
   i = 0;
-  while (i < 5)
+  while (i < 6)
     {
       pause();
       kill(enemy_pid(0, 1), SIGUSR1);
