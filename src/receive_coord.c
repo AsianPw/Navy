@@ -1,11 +1,11 @@
 /*
 ** receive_coord.c for navy in /home/brice/Documents/PSU/PSU_2016_navy/src
-** 
+**
 ** Made by Brice Lang-Nguyen
 ** Login   <brice.lang-nguyen@epitech.eu>
-** 
+**
 ** Started on  Sat Feb  4 16:09:54 2017 Brice Lang-Nguyen
-** Last update Sat Feb  4 17:04:24 2017 Brice Lang-Nguyen
+** Last update Tue Feb  7 19:02:56 2017 Sadisadou
 */
 
 
@@ -29,6 +29,8 @@ char		*increm(char c, int stat)
 	tab[j++] = '\0';
       i = 0;
     }
+  if (stat == 2)
+    tab[i] = '\0';
   return (tab);
 }
 
@@ -50,33 +52,40 @@ int	binchar_to_int(char *str)
   int	dec;
 
   i = 0;
+  dec = 0;
   while (str[i] != '\0')
     {
       if (str[i] == '1')
-	dec *= 2 + 1;
+	dec = dec * 2 + 1;
       else if (str[i] == '0')
-	dec *= 2;
+	dec = dec * 2;
+      i++;
     }
+  dec = dec + 1;
   return (dec);
 }
 
 
-int			receive_coord()
+int	receive_coord()
 {
   struct sigaction	action;
   int			i;
   int			res;
 
   action.sa_sigaction = &handler;
+  action.sa_flags = SA_SIGINFO;
   sigaction(SIGUSR1, &action, NULL);
   sigaction(SIGUSR2, &action, NULL);
+  res = 0;
   i = 0;
-  while (i < 5)
+  increm(0, 1);
+  kill(enemy_pid(0, 1), SIGUSR1);
+  while (i < 7)
     {
       pause();
       kill(enemy_pid(0, 1), SIGUSR1);
       i++;
     }
-  res = binchar_to_int(increm(0, 1));
+  res = binchar_to_int(increm(0, 2));
   return (res);
 }

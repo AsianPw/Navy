@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 13:25:37 2017 Sadisadou
-** Last update Sat Feb  4 17:04:43 2017 Brice Lang-Nguyen
+** Last update Tue Feb  7 17:07:53 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -26,9 +26,8 @@ void	attacker1(int state)
 	{
 	  my_printf("%s:  ", s);
 	  kill(enemy_pid(0, 1), SIGUSR1);
-	  usleep(150000);
+	  //usleep(140000);
 	  send_coord(s);
-	  pause();
 	  my_printf("\n\nwaiting for enemy's attack...\n");
 	  pause();
 	  kill(enemy_pid(0, 1), SIGUSR1);
@@ -38,11 +37,12 @@ void	attacker1(int state)
     }
 }
 
-void	ignore(int sig)
+void	ignore(int sig, siginfo_t* info, void *context)
 {
   if (sig == SIGUSR1 || sig == SIGUSR2)
     return ;
-  return ;
+  else if (context != NULL)
+    return ;
 }
 
 
@@ -52,11 +52,13 @@ void	attacker2(int state)
   char *s;
 
   action.sa_sigaction = &ignore;
+  action.sa_flags = SA_SIGINFO;
   my_printf("waiting for enemy's attack...\n");
   sigaction(SIGUSR1, &action, NULL);
   sigaction(SIGUSR2, &action, NULL);
   pause();
   receive_coord();
+  kill(enemy_pid(0, 1), SIGUSR1);
   while (state)
     {
       my_printf("attack:  ");
@@ -66,7 +68,7 @@ void	attacker2(int state)
       else
 	{
 	  my_printf("%s:  \n\n", s);
-	  kill(enemy_pid(0, 1), SIGUSR1);	  
+	  kill(enemy_pid(0, 1), SIGUSR1);
 	  pause();
 	  state = 0;
 	}

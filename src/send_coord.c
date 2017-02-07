@@ -1,11 +1,11 @@
 /*
 ** send_coord.c for navy in /home/brice/Documents/PSU/PSU_2016_navy/src
-** 
+**
 ** Made by Brice Lang-Nguyen
 ** Login   <brice.lang-nguyen@epitech.eu>
-** 
+**
 ** Started on  Sat Feb  4 15:52:48 2017 Brice Lang-Nguyen
-** Last update Sat Feb  4 16:29:20 2017 Brice Lang-Nguyen
+** Last update Tue Feb  7 19:02:08 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -23,10 +23,13 @@ int	char_to_int(char *str)
   multi = 1;
   while (str[i] != '\0')
     {
-      res += (str[i] - '0') * multi;
-      multi *= 10;
+      //res += (str[i] - '0') * multi;
+      //multi *= 10;
+      //i++;
+      res += str[i];
       i++;
     }
+  res -= 1;
   return (res);
 }
 
@@ -63,13 +66,14 @@ char	*bin_crypt(int nb)
   return (str);
 }
 
-int			send_coord(char *coord)
+int	send_coord(char *coord)
 {
-  char			*str;
-  int			i;
+  char	*str;
+  int	i;
 
   str = bin_crypt(char_to_int(coord));
   i = 0;
+  pause();
   while (str[i] != '\0')
     {
       if (str[i] == '0')
