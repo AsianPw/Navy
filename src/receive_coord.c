@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Sat Feb  4 16:09:54 2017 Brice Lang-Nguyen
-** Last update Tue Feb  7 19:02:56 2017 Sadisadou
+** Last update Tue Feb  7 19:11:59 2017 Sadisadou
 */
 
 
@@ -80,8 +80,9 @@ int	receive_coord()
   i = 0;
   increm(0, 1);
   kill(enemy_pid(0, 1), SIGUSR1);
-  while (i < 7)
+  while (i < 8);
     {
+      printf("%i\n", i);
       pause();
       kill(enemy_pid(0, 1), SIGUSR1);
       i++;

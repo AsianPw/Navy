@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Sat Feb  4 15:52:48 2017 Brice Lang-Nguyen
-** Last update Tue Feb  7 19:02:08 2017 Sadisadou
+** Last update Tue Feb  7 19:12:01 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -76,6 +76,7 @@ int	send_coord(char *coord)
   pause();
   while (str[i] != '\0')
     {
+      printf("%i\n", i);
       if (str[i] == '0')
 	kill(enemy_pid(0, 1), SIGUSR1);
       else if (str[i] == '1')

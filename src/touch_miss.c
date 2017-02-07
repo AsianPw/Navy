@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 13:25:37 2017 Sadisadou
-** Last update Tue Feb  7 17:07:53 2017 Sadisadou
+** Last update Tue Feb  7 19:13:15 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -37,12 +37,13 @@ void	attacker1(int state)
     }
 }
 
-void	ignore(int sig, siginfo_t* info, void *context)
+void	ignore(int sig, siginfo_t *info, void *context)
 {
   if (sig == SIGUSR1 || sig == SIGUSR2)
     return ;
-  else if (context != NULL)
+  if (context != NULL)// || info == NULL)
     return ;
+  return ;
 }
 
 
