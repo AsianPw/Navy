@@ -5,45 +5,37 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 ** 
 ** Started on  Sat Feb  4 17:28:09 2017 Brice Lang-Nguyen
-** Last update Wed Feb  8 13:40:55 2017 Brice Lang-Nguyen
+** Last update Wed Feb  8 17:04:06 2017 Brice Lang-Nguyen
 */
 
 #include <stdlib.h>
 #include "navy.h"
 
-void	add_vert(char col, char line, char nb, char **map)
+void	add_vert(char col, char line, char line2, char **map)
 {
   int	i;
 
   i = 0;
-  while (i < nb - '0')
+  while (line + i <= line2)
+    i++;
+  while (line <= line2)
     {
-      if (col % 2 == 0)
-	map[line - '0' - 1][col % 16] = nb;
-      else
-	map[line - '0' - 1][col % 16 + 1] = nb;
+      map[line - '0' - 1][(col - 'A') * 2] = i + '0';
       line++;
-      i++;
     }
 }
 
-void	add_hori(char col, char line, char nb, char **map)
+void	add_hori(char col, char col2, char line, char **map)
 {
   int	i;
 
   i = 0;
-  if (col % 2 == 0)
+  while (col + i <= col2)
+    i++;
+  while (col <= col2)
     {
-      col += 2;
-      map[line - '0' - 1][col % 16] = nb;
-    }
-  else
-    map[line - '0' - 1][col % 16 + 1] = nb;
-  while (i < nb - '0')
-    {
-     map[line - '0' - 1][col % 16] = nb;
-     col += 2;
-     i++;
+      map[line - '0' - 1][(col - 'A') * 2] = i + '0';
+      col++;
     }
 }
 
@@ -57,9 +49,9 @@ char	**load_map(char *buff)
   while (buff[i] != '\0')
     {
       if (buff[i + 2] == buff[i + 5])
-	add_vert(buff[i+2], buff[i+3], buff[i], map);
+	add_vert(buff[i+2], buff[i+3], buff[i+6], map);
       else
-	add_hori(buff[i+2], buff[i+3], buff[i], map);
+      	add_hori(buff[i+2], buff[i+5], buff[i+3], map);
       i += 8;
     }
   return (map);
