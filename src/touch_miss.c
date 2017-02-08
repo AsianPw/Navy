@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 13:25:37 2017 Sadisadou
-** Last update Tue Feb  7 20:17:31 2017 Sadisadou
+** Last update Wed Feb  8 13:42:05 2017 Brice Lang-Nguyen
 */
 
 #include <signal.h>
@@ -41,7 +41,7 @@ void	ignore(int sig, siginfo_t *info, void *context)
 {
   if (sig == SIGUSR1 || sig == SIGUSR2)
     return ;
-  else if (context != NULL)// || info == NULL)
+  else if (context != NULL || info == NULL)
     return ;
 }
 

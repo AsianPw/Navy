@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Sat Feb  4 15:52:48 2017 Brice Lang-Nguyen
-** Last update Tue Feb  7 20:17:15 2017 Sadisadou
+** Last update Wed Feb  8 12:34:56 2017 Brice Lang-Nguyen
 */
 
 #include <signal.h>
@@ -16,11 +16,9 @@ int	char_to_int(char *str)
 {
   int	i;
   int	res;
-  int	multi;
-
+ 
   i = 0;
   res = 0;
-  multi = 1;
   while (str[i] != '\0')
     {
       //res += (str[i] - '0') * multi;

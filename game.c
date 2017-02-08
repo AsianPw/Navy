@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Sun Feb  5 18:19:17 2017 Sadisadou
+** Last update Wed Feb  8 12:32:12 2017 Brice Lang-Nguyen
 */
 
 #include <signal.h>
@@ -31,13 +31,13 @@ void	handleSignal(int sig, siginfo_t* info, void* context)
   return ;
 }
 
-int	the_game(int i)
+int	the_game(int i, char **map)
 {
   int	state;
 
   while (1)
   {
-    aff1();
+    aff1(map);
     state = 1;
     if (i == 0)
       {
@@ -56,8 +56,10 @@ void	game1(char *buff)
 {
   struct sigaction	action;
   int			i;
+  char			**map;
 
   i = 0;
+  map = load_map(buff);
   my_printf("my_pid:  %d\n", getpid());
   sigemptyset(&action.sa_mask);
   action.sa_sigaction = &handleSignal;
@@ -67,17 +69,17 @@ void	game1(char *buff)
   pause();
   kill(enemy_pid(0, 1), SIGUSR1);
   my_printf("enemy connected\n\n");
-  the_game(i);
+  the_game(i, map);
 }
 
 void	game2(char* buff, int pid1)
 {
   struct sigaction	action;
   int			i;
-  char			*map;
+  char			**map;
 
   i = 1;
-  //map = load_map(buff);
+  map = load_map(buff);
   my_printf("my_pid:  %d\n", getpid());
   sigemptyset(&action.sa_mask);
   action.sa_sigaction = &handleSignal;
@@ -86,5 +88,5 @@ void	game2(char* buff, int pid1)
   sigaction(SIGUSR1, &action, NULL);
   pause();
   my_printf("successfully connected\n\n");
-  the_game(i);
+  the_game(i, map);
 }
