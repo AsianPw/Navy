@@ -5,11 +5,11 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Jan 19 19:24:09 2017 Sadisadou
-** Last update Fri Jan 27 17:25:06 2017 Sadisadou
+** Last update Fri Feb 10 16:03:37 2017 Sadisadou
 */
 
 #include <stdlib.h>
-#include "include/my.h"
+#include "my_printf.h"
 
 int	args(char* str, char a)
 {

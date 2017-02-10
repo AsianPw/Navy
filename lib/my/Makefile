@@ -5,7 +5,7 @@
 ## Login   <Sadisadou@epitech.net>
 ##
 ## Started on  Sat Nov 12 18:57:01 2016 Bastien Guillaumat
-## Last update Mon Jan 30 15:26:26 2017 Sadisadou
+## Last update Fri Feb 10 16:06:02 2017 Sadisadou
 ##
 
 SRC	=	my_printf.c\
@@ -24,6 +24,8 @@ SRC	=	my_printf.c\
 		flags1.c\
 		flags2.c\
 		flags3.c\
+		free.c\
+		my_str_to_wordtab.c\
 		get_next_line.c
 
 OBJ	=	$(SRC:.c=.o)

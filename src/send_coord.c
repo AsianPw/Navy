@@ -5,52 +5,67 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Sat Feb  4 15:52:48 2017 Brice Lang-Nguyen
-** Last update Wed Feb  8 12:34:56 2017 Brice Lang-Nguyen
+** Last update Fri Feb 10 18:14:01 2017 Sadisadou
 */
 
 #include <signal.h>
 #include "navy.h"
 
-
-int	char_to_int(char *str)
+char*	char_to_int(char *s, char *str)
 {
-  int	i;
-  int	res;
- 
-  i = 0;
-  res = 0;
-  while (str[i] != '\0')
-    {
-      //res += (str[i] - '0') * multi;
-      //multi *= 10;
-      //i++;
-      res += str[i];
-      i++;
-    }
-  res -= 1;
-  return (res);
-}
-
-char	*int_to_bin(int nb, char *str)
-{
-  int	rem;
-  int	bin;
   int	i;
   int	j;
+  int	n;
 
-  bin = 0;
-  i = 1;
-  j = 0;
-  while (nb != 0)
+  i = 0;
+  n = 0;
+  while (str[i] != '\0')
     {
-      rem = nb % 2;
-      nb /= 2;
-      bin += (rem * i);
-      str[j++] = rem + '0';
-      i *= 10;
+      j = 0;
+      if (char_is_char(str[i]))
+	{
+	  while (j <= (str[i] - 65))
+	    {
+	      s[n] = 0;
+	      n++;
+	      j++;
+	    }
+	}
+      else if (char_is_num(str[i]))
+	{
+	  while (j <= (str[i] - 49))
+	    {
+	      s[n] = 1;
+	      n++;
+	      j++;
+	    }
+	}
+      i++;
     }
-  return (str);
+  s[n] = '\0';
+  return (s);
 }
+
+/* char	*int_to_bin(int nb, char *str) */
+/* { */
+/*   int	rem; */
+/*   int	bin; */
+/*   int	i; */
+/*   int	j; */
+
+/*   bin = 0; */
+/*   i = 1; */
+/*   j = 0; */
+/*   while (nb != 0) */
+/*     { */
+/*       rem = nb % 2; */
+/*       nb /= 2; */
+/*       bin += (rem * i); */
+/*       str[j++] = rem + '0'; */
+/*       i *= 10; */
+/*     } */
+/*   return (str); */
+/* } */
 
 
 char	*bin_crypt(int nb)
@@ -59,7 +74,7 @@ char	*bin_crypt(int nb)
 
   if ((str = malloc(sizeof(char) * 10)) == NULL)
     return (NULL);
-  int_to_bin(nb, str);
+  // int_to_bin(nb, str);
   str = my_revstr(str);
   return (str);
 }
@@ -69,7 +84,10 @@ int	send_coord(char *coord)
   char	*str;
   int	i;
 
-  str = bin_crypt(char_to_int(coord));
+  if ((str = malloc(sizeof(char) * 19)) == NULL)
+    return (84);
+  str = char_to_int(str, coord);
+  printf("%s\n", str);
   i = 0;
   pause();
   while (str[i] != '\0')

@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Mon Jan 30 12:18:17 2017 Brice Lang-Nguyen
-** Last update Wed Feb  8 12:35:57 2017 Brice Lang-Nguyen
+** Last update Fri Feb 10 16:04:15 2017 Sadisadou
 */
 
 #ifndef NAVY_H_
@@ -21,6 +21,7 @@
 #include "../lib/my/my_printf.h"
 
 int	my_printf(const char*, ...);
+void	my_free(char **);
 int	check_map(char*);
 void	my_help();
 int	player1(int);
@@ -29,16 +30,16 @@ void	game1(char*);
 void	game2(char*, int);
 int	openerr(int);
 char**	create_map();
-void	map();
+void	map(char **);
 int	ennemy_pid(int, int);
 void	handleSignal(int, siginfo_t*, void*);
-int	the_game(int, char**);
-void	aff1();
+int	the_game(int, char**, char**);
+void	aff1(char **, char**);
 int	char_is_num(char);
 int	char_is_char(char);
 int	is_low_alpha(char);
-void	attacker1(int);
-void	attacker2(int);
+void	attacker1(int, char**, char**);
+void	attacker2(int, char**, char**);
 int	is_valid(char*);
 int	enemy_pid(int, int);
 int	receive_coord();

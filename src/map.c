@@ -5,12 +5,31 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Fri Feb  3 19:12:44 2017 Sadisadou
-** Last update Thu Feb  9 17:18:49 2017 Sadisadou
+** Last update Fri Feb 10 16:54:37 2017 Sadisadou
 */
 
 #include "navy.h"
 
-char**	map_pos(char** map, int	attack)
+void	check(char **map, int x, int y)
+{
+  if (map[y - 49][(x - 65) * 2] > '1' && map[y - 49][(x - 65) * 2] < '6')
+    {
+      map[y - 49][(x - 65) * 2] = 'x';
+      my_printf("%c%c: hit\n\n", x, y);
+    }
+  else if (map[y - 49][(x - 65) * 2] = 'x')
+    {
+      map[y - 49][(x - 65) * 2] = 'x';
+      my_printf("%c%c: missed\n\n", x, y);
+    }
+  else
+    {
+      map[y - 49][(x - 65) * 2] = 'o';
+      my_printf("%c%c: missed\n\n", x, y);
+    }
+}
+
+int	map_pos(char** map, int	attack)
 {
   int	x;
   int	y;
@@ -27,11 +46,8 @@ char**	map_pos(char** map, int	attack)
 	  x = 'A' + x1;
 	  if (attack == (x + y))
 	    {
-	      if (map[y][x] > '1' && map[y][x] < '6')
-		kill(enemy_pid(0, 1), SIGUSR1);
-	      else
-		kill(enemy_pid(0, 1), SIGUSR2);
-	      return (NULL);
+	      check(map, x, y);
+	      return (0);
 	    }
 	  x1++;
 	}
