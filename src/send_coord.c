@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Sat Feb  4 15:52:48 2017 Brice Lang-Nguyen
-** Last update Fri Feb 10 18:14:01 2017 Sadisadou
+** Last update Fri Feb 10 18:22:32 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -24,21 +24,13 @@ char*	char_to_int(char *s, char *str)
       j = 0;
       if (char_is_char(str[i]))
 	{
-	  while (j <= (str[i] - 65))
-	    {
-	      s[n] = 0;
-	      n++;
-	      j++;
-	    }
+	  while (j++ <= (str[i] - 65))
+	    s[n++] = '0';
 	}
       else if (char_is_num(str[i]))
 	{
-	  while (j <= (str[i] - 49))
-	    {
-	      s[n] = 1;
-	      n++;
-	      j++;
-	    }
+	  while (j++ <= (str[i] - 49))
+	    s[n++] = '1';
 	}
       i++;
     }
@@ -68,16 +60,16 @@ char*	char_to_int(char *s, char *str)
 /* } */
 
 
-char	*bin_crypt(int nb)
-{
-  char	*str;
+/* char	*bin_crypt(int nb) */
+/* { */
+/*   char	*str; */
 
-  if ((str = malloc(sizeof(char) * 10)) == NULL)
-    return (NULL);
-  // int_to_bin(nb, str);
-  str = my_revstr(str);
-  return (str);
-}
+/*   if ((str = malloc(sizeof(char) * 10)) == NULL) */
+/*     return (NULL); */
+/*   // int_to_bin(nb, str); */
+/*   str = my_revstr(str); */
+/*   return (str); */
+/* } */
 
 int	send_coord(char *coord)
 {
