@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Fri Feb  3 19:12:44 2017 Sadisadou
-** Last update Fri Feb 10 16:54:37 2017 Sadisadou
+** Last update Fri Feb 10 18:27:39 2017 Sadisadou
 */
 
 #include "navy.h"
@@ -17,7 +17,7 @@ void	check(char **map, int x, int y)
       map[y - 49][(x - 65) * 2] = 'x';
       my_printf("%c%c: hit\n\n", x, y);
     }
-  else if (map[y - 49][(x - 65) * 2] = 'x')
+  else if (map[y - 49][(x - 65) * 2] == 'x')
     {
       map[y - 49][(x - 65) * 2] = 'x';
       my_printf("%c%c: missed\n\n", x, y);
