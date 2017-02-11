@@ -5,16 +5,17 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 13:25:37 2017 Sadisadou
-** Last update Wed Feb  8 20:17:49 2017 Brice Lang-Nguyen
+** Last update Sat Feb 11 12:21:43 2017 Brice Lang-Nguyen
 */
 
 #include <signal.h>
 #include "navy.h"
 
 
-void	attacker1(int state, char **map)
+void	attacker1(int state, char** map, char **enemy_map)
 {
-  char *s;
+  char  *s;
+  int	attack;
 
   while (state)
     {
@@ -27,9 +28,11 @@ void	attacker1(int state, char **map)
 	  my_printf("%s:  ", s);
 	  kill(enemy_pid(0, 1), SIGUSR1);
 	  send_coord(s);
+	  //pause();
 	  my_printf("\n\nwaiting for enemy's attack...\n");
 	  pause();
-	  receive_coord(map);
+	  attack = receive_coord();
+	  map_pos(map, attack);
 	  kill(enemy_pid(0, 1), SIGUSR1);
 	  state = 0;
 	}
@@ -37,26 +40,15 @@ void	attacker1(int state, char **map)
     }
 }
 
-void	ignore(int sig, siginfo_t *info, void *context)
+void	attacker2(int state, char **map, char** enemy_map)
 {
-  if (sig == SIGUSR1 || sig == SIGUSR2)
-    return ;
-  else if (context != NULL || info == NULL)
-    return ;
-}
+  char  *s;
+  int	attack;
 
-
-void	attacker2(int state, char **map)
-{
-  char *s;
-
-  //action.sa_sigaction = &ignore;
-  //action.sa_flags = SA_SIGINFO;
   my_printf("waiting for enemy's attack...\n");
-  //sigaction(SIGUSR1, &action, NULL);
-  //sigaction(SIGUSR2, &action, NULL);
   pause();
-  receive_coord(map);
+  attack = receive_coord();
+  map_pos(map, attack);
   while (state)
     {
       my_printf("attack:  ");

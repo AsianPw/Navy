@@ -5,27 +5,37 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Sat Feb  4 15:52:48 2017 Brice Lang-Nguyen
-** Last update Fri Feb 10 19:49:58 2017 Sadisadou
+** Last update Fri Feb 10 19:09:03 2017 Sadisadou
 */
 
 #include <signal.h>
 #include "navy.h"
 
-
-int	char_to_int(char *str)
+char*	char_to_int(char *s, char *str)
 {
   int	i;
-  int	res;
+  int	j;
+  int	n;
 
   i = 0;
-  res = 0;
+  n = 0;
   while (str[i] != '\0')
     {
-      res += str[i];
+      j = 0;
+      if (char_is_char(str[i]))
+	{
+	  while (j++ <= (str[i] - 65))
+	    s[n++] = '0';
+	}
+      else if (char_is_num(str[i]))
+	{
+	  while (j++ <= (str[i] - 49))
+	    s[n++] = '1';
+	}
       i++;
     }
-  res -= 1;
-  return (res);
+  s[n] = '\0';
+  return (s);
 }
 
 char	*int_to_bin(int nb, char *str)
@@ -65,8 +75,12 @@ int	send_coord(char *coord)
 {
   char	*str;
   int	i;
+  int	a = 5;
 
-  str = bin_crypt(char_to_int(coord));
+  if ((str = malloc(sizeof(char) * 19)) == NULL)
+    return (84);
+  //str = char_to_int(str, coord);
+  printf("%s\n", int_to_bin(a, str));
   i = 0;
   pause();
   while (str[i] != '\0')

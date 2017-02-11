@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Wed Feb  8 20:18:44 2017 Brice Lang-Nguyen
+** Last update Sat Feb 11 12:23:27 2017 Brice Lang-Nguyen
 */
 
 #include <signal.h>
@@ -31,22 +31,22 @@ void	handleSignal(int sig, siginfo_t* info, void* context)
   return ;
 }
 
-int	the_game(int i, char **map)
+int	the_game(int i, char **map, char **enemy_map)
 {
   int	state;
 
   while (1)
   {
-    aff1(map);
+    aff1(map, enemy_map);
     state = 1;
     if (i == 0)
       {
-	attacker1(state, map);
+	attacker1(state, map, enemy_map);
 	i = 0;
       }
     else
       {
-	attacker2(state, map);
+	attacker2(state, map, enemy_map);
 	i = 1;
       }
   }
@@ -57,9 +57,11 @@ void	game1(char *buff)
   struct sigaction	action;
   int			i;
   char			**map;
+  char		        **enemy_map;
 
   i = 0;
   map = load_map(buff);
+  enemy_map = create_map();
   my_printf("my_pid:  %d\n", getpid());
   sigemptyset(&action.sa_mask);
   action.sa_sigaction = &handleSignal;
@@ -69,7 +71,9 @@ void	game1(char *buff)
   pause();
   kill(enemy_pid(0, 1), SIGUSR1);
   my_printf("enemy connected\n\n");
-  the_game(i, map);
+  the_game(i, map, enemy_map);
+  my_free(map);
+  my_free(enemy_map);
 }
 
 void	game2(char* buff, int pid1)
@@ -77,8 +81,10 @@ void	game2(char* buff, int pid1)
   struct sigaction	action;
   int			i;
   char			**map;
+  char			**enemy_map;
 
   i = 1;
+  enemy_map = create_map();
   map = load_map(buff);
   my_printf("my_pid:  %d\n", getpid());
   sigemptyset(&action.sa_mask);
@@ -88,5 +94,7 @@ void	game2(char* buff, int pid1)
   sigaction(SIGUSR1, &action, NULL);
   pause();
   my_printf("successfully connected\n\n");
-  the_game(i, map);
+  the_game(i, map, enemy_map);
+  my_free(map);
+  my_free(enemy_map);
 }
