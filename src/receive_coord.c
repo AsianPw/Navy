@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Sat Feb  4 16:09:54 2017 Brice Lang-Nguyen
-** Last update Wed Feb  8 19:42:10 2017 Brice Lang-Nguyen
+** Last update Sat Feb 11 20:30:31 2017 Sadisadou
 */
 
 
@@ -21,6 +21,7 @@ char		*increm(char c, int stat)
   int		j;
 
   tab[i] = c;
+  //printf("%c\n", tab[i]);
   i++;
   if (stat == 1)
     {
@@ -45,12 +46,10 @@ void	handler(int signal, siginfo_t *info, void *context)
     return ;
 }
 
-int	binchar_to_int(char *str)
+int	binchar_to_int2(char *str, int i)
 {
-  int	i;
-  int	dec;
+  int		dec;
 
-  i = 0;
   dec = 0;
   while (str[i] != '\0')
     {
@@ -60,14 +59,35 @@ int	binchar_to_int(char *str)
 	dec = dec * 2;
       i++;
     }
-  dec = dec + 1;
   return (dec);
+}
+
+t_coord		*binchar_to_int(char *str)
+{
+  int		i;
+  int		dec;
+  t_coord	*coord;
+
+  i = 0;
+  dec = 0;
+  while (i < 8)
+    {
+      if (str[i] == '1')
+	dec = dec * 2 + 1;
+      else if (str[i] == '0')
+	dec = dec * 2;
+      i++;
+    }
+  coord->y = dec;
+  coord->x = binchar_to_int2(str, i);
+  return (coord);
 }
 
 
 int	receive_coord(char **map)
 {
   struct sigaction	action;
+  t_coord		*coord;
   int			i;
   int			res;
 
@@ -78,14 +98,16 @@ int	receive_coord(char **map)
   res = 0;
   i = 0;
   increm(0, 1);
+  usleep(150);
   kill(enemy_pid(0, 1), SIGUSR1);
-  while (i < 7)
+  while (i < 13)
     {
       pause();
       kill(enemy_pid(0, 1), SIGUSR1);
       i++;
     }
-  res = binchar_to_int(increm(0, 2));
-  map_pos(map, res);
+  //coord = binchar_to_int(increm(0, 2));
+  //printf("%i, %i\n", coord->x, coord->y);
+  //map_pos(map, coord);
   return (res);
 }

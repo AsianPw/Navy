@@ -5,36 +5,61 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Sat Feb  4 15:52:48 2017 Brice Lang-Nguyen
-** Last update Fri Feb 10 19:49:58 2017 Sadisadou
+** Last update Sat Feb 11 20:29:43 2017 Sadisadou
 */
 
 #include <signal.h>
 #include "navy.h"
 
 
-int	char_to_int(char *str)
-{
-  int	i;
-  int	res;
+/* int	char_to_int(char *str) */
+/* { */
+/*   int	i; */
+/*   int	res; */
 
-  i = 0;
-  res = 0;
-  while (str[i] != '\0')
+/*   i = 0; */
+/*   res = 0; */
+/*   while (str[i] != '\0') */
+/*     { */
+/*       res += str[i]; */
+/*       i++; */
+/*     } */
+/*   res -= 1; */
+/*   return (res); */
+/* } */
+
+char*	int_to_bin2(int nb, char* str)
+{
+  int	rem;
+  int	bin;
+  int	i;
+  int	x;
+
+  bin = 0;
+  i = 1;
+  x = 0;
+  while (nb != 0)
     {
-      res += str[i];
-      i++;
+      rem = nb % 2;
+      nb /= 2;
+      bin += (rem * i);
+      str[x] = rem + '0';
+      x++;
+      i *= 10;
     }
-  res -= 1;
-  return (res);
+  return (str);
 }
 
-char	*int_to_bin(int nb, char *str)
+char	*int_to_bin(int nb, char *str, int nb2)
 {
+  char*	str2;
   int	rem;
   int	bin;
   int	i;
   int	j;
 
+  if ((str2 = malloc(sizeof(char) * 6)) == NULL)
+    return (NULL);
   bin = 0;
   i = 1;
   j = 0;
@@ -43,20 +68,27 @@ char	*int_to_bin(int nb, char *str)
       rem = nb % 2;
       nb /= 2;
       bin += (rem * i);
-      str[j++] = rem + '0';
+      str[j] = rem + '0';
+      j++;
       i *= 10;
     }
+  str2 = int_to_bin2(nb2, str2);
+  str = my_strcat(str, str2);
   return (str);
 }
 
 
-char	*bin_crypt(int nb)
+char	*bin_crypt(char *s)
 {
   char	*str;
+  int	nb;
+  int	nb2;
 
-  if ((str = malloc(sizeof(char) * 10)) == NULL)
+  nb = s[1];
+  nb2 = s[0];
+  if ((str = malloc(sizeof(char) * 14)) == NULL)
     return (NULL);
-  int_to_bin(nb, str);
+  str = int_to_bin(nb, str, nb2);
   str = my_revstr(str);
   return (str);
 }
@@ -66,7 +98,7 @@ int	send_coord(char *coord)
   char	*str;
   int	i;
 
-  str = bin_crypt(char_to_int(coord));
+  str = bin_crypt(coord);
   i = 0;
   pause();
   while (str[i] != '\0')

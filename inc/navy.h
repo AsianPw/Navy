@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Mon Jan 30 12:18:17 2017 Brice Lang-Nguyen
-** Last update Sat Feb 11 12:22:57 2017 Brice Lang-Nguyen
+** Last update Sat Feb 11 17:12:54 2017 Sadisadou
 */
 
 #ifndef NAVY_H_
@@ -19,6 +19,11 @@
 #include <signal.h>
 #include "lib.h"
 #include "../lib/my/my_printf.h"
+
+typedef struct s_coord {
+  int	x;
+  int	y;
+}	t_coord;
 
 int	my_printf(const char*, ...);
 void	my_free(char **);
@@ -45,5 +50,5 @@ int	enemy_pid(int, int);
 int	receive_coord();
 int	send_coord(char*);
 char	**load_map(char*);
-void	map_pos(char**, int);
+int	map_pos(char**, int);
 #endif
