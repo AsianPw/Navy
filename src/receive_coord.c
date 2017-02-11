@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Sat Feb  4 16:09:54 2017 Brice Lang-Nguyen
-** Last update Sat Feb 11 20:30:31 2017 Sadisadou
+** Last update Sat Feb 11 21:03:32 2017 Sadisadou
 */
 
 
@@ -68,9 +68,10 @@ t_coord		*binchar_to_int(char *str)
   int		dec;
   t_coord	*coord;
 
+  coord = malloc(sizeof(*coord));
   i = 0;
   dec = 0;
-  while (i < 8)
+  while (i < 7)
     {
       if (str[i] == '1')
 	dec = dec * 2 + 1;
@@ -106,8 +107,8 @@ int	receive_coord(char **map)
       kill(enemy_pid(0, 1), SIGUSR1);
       i++;
     }
-  //coord = binchar_to_int(increm(0, 2));
-  //printf("%i, %i\n", coord->x, coord->y);
+  coord = binchar_to_int(increm(0, 2));
+  printf("%i, %i\n", coord->x, coord->y);
   //map_pos(map, coord);
   return (res);
 }
