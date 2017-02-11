@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Sat Feb  4 16:09:54 2017 Brice Lang-Nguyen
-** Last update Tue Feb  7 20:17:00 2017 Sadisadou
+** Last update Wed Feb  8 19:42:10 2017 Brice Lang-Nguyen
 */
 
 
@@ -65,7 +65,7 @@ int	binchar_to_int(char *str)
 }
 
 
-int	receive_coord()
+int	receive_coord(char **map)
 {
   struct sigaction	action;
   int			i;
@@ -86,5 +86,6 @@ int	receive_coord()
       i++;
     }
   res = binchar_to_int(increm(0, 2));
+  map_pos(map, res);
   return (res);
 }

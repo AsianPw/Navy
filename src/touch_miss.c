@@ -5,14 +5,14 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 13:25:37 2017 Sadisadou
-** Last update Wed Feb  8 18:03:55 2017 Sadisadou
+** Last update Wed Feb  8 20:17:49 2017 Brice Lang-Nguyen
 */
 
 #include <signal.h>
 #include "navy.h"
 
 
-void	attacker1(int state)
+void	attacker1(int state, char **map)
 {
   char *s;
 
@@ -29,7 +29,7 @@ void	attacker1(int state)
 	  send_coord(s);
 	  my_printf("\n\nwaiting for enemy's attack...\n");
 	  pause();
-	  receive_coord();
+	  receive_coord(map);
 	  kill(enemy_pid(0, 1), SIGUSR1);
 	  state = 0;
 	}
@@ -46,7 +46,7 @@ void	ignore(int sig, siginfo_t *info, void *context)
 }
 
 
-void	attacker2(int state)
+void	attacker2(int state, char **map)
 {
   char *s;
 
@@ -56,7 +56,7 @@ void	attacker2(int state)
   //sigaction(SIGUSR1, &action, NULL);
   //sigaction(SIGUSR2, &action, NULL);
   pause();
-  receive_coord();
+  receive_coord(map);
   while (state)
     {
       my_printf("attack:  ");

@@ -5,12 +5,12 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Fri Feb  3 19:12:44 2017 Sadisadou
-** Last update Wed Feb  8 19:38:13 2017 Sadisadou
+** Last update Wed Feb  8 20:20:57 2017 Brice Lang-Nguyen
 */
 
 #include "navy.h"
 
-char**	map_pos(char** map, int	attack)
+void	map_pos(char** map, int	attack)
 {
   int	x;
   int	y;

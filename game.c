@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Wed Feb  8 12:32:12 2017 Brice Lang-Nguyen
+** Last update Wed Feb  8 20:18:44 2017 Brice Lang-Nguyen
 */
 
 #include <signal.h>
@@ -41,12 +41,12 @@ int	the_game(int i, char **map)
     state = 1;
     if (i == 0)
       {
-	attacker1(state);
+	attacker1(state, map);
 	i = 0;
       }
     else
       {
-	attacker2(state);
+	attacker2(state, map);
 	i = 1;
       }
   }
