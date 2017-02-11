@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Sat Feb  4 15:52:48 2017 Brice Lang-Nguyen
-** Last update Sat Feb 11 20:29:43 2017 Sadisadou
+** Last update Sat Feb 11 22:38:46 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -84,8 +84,16 @@ char	*bin_crypt(char *s)
   int	nb;
   int	nb2;
 
-  nb = s[1];
-  nb2 = s[0];
+  if ((char_is_char(s[0]) || is_low_alpha(s[0])) && char_is_num(s[1]))
+    {
+      nb = s[1];
+      nb2 = s[0];
+    }
+  else
+    {
+      nb = s[0];
+      nb2 = s[1];
+    }
   if ((str = malloc(sizeof(char) * 14)) == NULL)
     return (NULL);
   str = int_to_bin(nb, str, nb2);
