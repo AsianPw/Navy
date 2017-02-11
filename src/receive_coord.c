@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Sat Feb  4 16:09:54 2017 Brice Lang-Nguyen
-** Last update Sat Feb 11 21:03:32 2017 Sadisadou
+** Last update Sat Feb 11 22:01:37 2017 Sadisadou
 */
 
 
@@ -85,18 +85,16 @@ t_coord		*binchar_to_int(char *str)
 }
 
 
-int	receive_coord(char **map)
+t_coord		*receive_coord(char **map)
 {
   struct sigaction	action;
   t_coord		*coord;
   int			i;
-  int			res;
 
   action.sa_sigaction = &handler;
   action.sa_flags = SA_SIGINFO;
   sigaction(SIGUSR1, &action, NULL);
   sigaction(SIGUSR2, &action, NULL);
-  res = 0;
   i = 0;
   increm(0, 1);
   usleep(150);
@@ -108,7 +106,5 @@ int	receive_coord(char **map)
       i++;
     }
   coord = binchar_to_int(increm(0, 2));
-  printf("%i, %i\n", coord->x, coord->y);
-  //map_pos(map, coord);
-  return (res);
+  return (coord);
 }

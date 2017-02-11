@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 13:25:37 2017 Sadisadou
-** Last update Sat Feb 11 20:12:35 2017 Sadisadou
+** Last update Sat Feb 11 21:55:40 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -14,8 +14,8 @@
 
 void	attacker1(int state, char** map, char **enemy_map)
 {
-  char  *s;
-  int	attack;
+  char		*s;
+  t_coord	*attack;
 
   while (state)
     {
@@ -32,7 +32,7 @@ void	attacker1(int state, char** map, char **enemy_map)
 	  my_printf("\n\nwaiting for enemy's attack...\n");
 	  pause();
 	  attack = receive_coord();
-	  //map_pos(map, attack);
+	  map_pos(map, attack);
 	  kill(enemy_pid(0, 1), SIGUSR1);
 	  state = 0;
 	}
@@ -42,13 +42,13 @@ void	attacker1(int state, char** map, char **enemy_map)
 
 void	attacker2(int state, char **map, char** enemy_map)
 {
-  char  *s;
-  int	attack;
+  char		*s;
+  t_coord	*attack;
 
   my_printf("waiting for enemy's attack...\n");
   pause();
   attack = receive_coord();
-  //map_pos(map, attack);
+  map_pos(map, attack);
   while (state)
     {
       my_printf("attack:  ");

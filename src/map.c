@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Fri Feb  3 19:12:44 2017 Sadisadou
-** Last update Sat Feb 11 12:22:25 2017 Brice Lang-Nguyen
+** Last update Sat Feb 11 22:25:58 2017 Sadisadou
 */
 
 #include "navy.h"
@@ -29,7 +29,7 @@ void	check(char **map, int x, int y)
     }
 }
 
-int	map_pos(char** map, int	attack)
+int	map_pos(char** map, t_coord *attack)
 {
   int	x;
   int	y;
@@ -37,14 +37,14 @@ int	map_pos(char** map, int	attack)
   int	y1;
 
   y1 = 0;
-  while (y1 < 7)
+  while (y1 < 8)
     {
       y = '1' + y1;
       x1 = 0;
       while (x1 < 8)
 	{
 	  x = 'A' + x1;
-	  if (attack == (x + y))
+	  if (attack->y == x && attack->x == y)
 	    {
 	      check(map, x, y);
 	      return (0);
