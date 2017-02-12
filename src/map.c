@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Fri Feb  3 19:12:44 2017 Sadisadou
-** Last update Sun Feb 12 18:17:09 2017 Sadisadou
+** Last update Sun Feb 12 18:51:07 2017 Sadisadou
 */
 
 #include "navy.h"
@@ -18,7 +18,7 @@ int	my_bool(int x, int state)
     i = x;
   if (state == 1)
     return (i);
-  return (2);
+  return (0);
 }
 
 void    handletouch(int sig, siginfo_t* info, void* context)
@@ -41,6 +41,7 @@ void	the_enemy(char** map, char* coord)
   action.sa_flags = SA_SIGINFO;
   sigaction(SIGUSR1, &action, NULL);
   sigaction(SIGUSR2, &action, NULL);
+  kill(enemy_pid(0, 1), SIGUSR1);
   pause();
   if ((i = my_bool(0, 1)) == 0)
     {
@@ -57,6 +58,7 @@ void	the_enemy(char** map, char* coord)
 
 void	check(char **map, int x, int y)
 {
+  pause();
   if (map[y - 49][(x - 65) * 2] > '1' && map[y - 49][(x - 65) * 2] < '6')
     {
       map[y - 49][(x - 65) * 2] = 'x';
