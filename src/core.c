@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 14:40:53 2017 Sadisadou
-** Last update Fri Feb 10 15:14:54 2017 Sadisadou
+** Last update Sun Feb 12 18:24:46 2017 Sadisadou
 */
 
 #include "navy.h"
@@ -67,22 +67,22 @@ void	map(char **map)
       my_printf("%d|%s\n", i+1, map[i]);
       i++;
     }
-  my_printf("\n\n");
+  my_printf("\n");
 }
 
-void	enemy_map(char **map)
-{
-  int   i;
+/* void	enemy_map(char **map) */
+/* { */
+/*   int   i; */
 
-  i = 0;
-  my_printf(" |A B C D E F G H\n-+---------------\n");
-  while (i < 8)
-    {
-      my_printf("%d|%s\n", i+1, map[i]);
-      i++;
-    }
-  my_printf("\n\n");
-}
+/*   i = 0; */
+/*   my_printf(" |A B C D E F G H\n-+---------------\n"); */
+/*   while (i < 8) */
+/*     { */
+/*       my_printf("%d|%s\n", i+1, map[i]); */
+/*       i++; */
+/*     } */
+/*   my_printf("\n"); */
+/* } */
 
 
 void	aff1(char **map_l, char** map_e)
@@ -90,5 +90,5 @@ void	aff1(char **map_l, char** map_e)
   my_printf("my positions:\n");
   map(map_l);
   my_printf("enemy's positions:\n");
-  enemy_map(map_e);
+  map(map_e);
 }
