@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Mon Jan 30 15:58:12 2017 Brice Lang-Nguyen
-** Last update Mon Feb 13 15:06:17 2017 Brice Lang-Nguyen
+** Last update Mon Feb 13 19:05:08 2017 Brice Lang-Nguyen
 */
 
 #include "navy.h"
@@ -41,16 +41,18 @@ int	size_is_ok(char *buff)
   while (i < 32)
     {
       i += 8;
-      printf("%c %c%c %c%c\n", buff[i-8], buff[i-6], buff[i-5], buff[i-3], buff[i-2]);
       if (buff[i-3] == buff[i-6])
 	{
-	  if (char_is_num(buff[i-2]) && char_is_num(buff[i-5]))
-	    {
-	      if (buff[i-8] != (buff[i-2] - buff[i-5] + '0' + 1))
-		return (false);
-	    }
+	  if (buff[i-8] != (buff[i-2] - buff[i-5] + '0' + 1))
+	    return (false);
 	}
-      //else if (buff[i] ==  buff[i-3])
+      else if (buff[i-2] ==  buff[i-5])
+	{
+	  if (buff[i-8] != (buff[i-3] - buff[i-6] + '0' + 1))
+	    return (false);
+	}
+      else
+	return (false);
     }
   return (true);
 }
