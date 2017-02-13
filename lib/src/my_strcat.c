@@ -5,10 +5,11 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Fri Jan 27 20:35:58 2017 Brice Lang-Nguyen
-** Last update Sat Feb 11 20:29:19 2017 Sadisadou
+** Last update Mon Feb 13 15:01:15 2017 Sadisadou
 */
 
 #include "lib.h"
+#include <stdio.h>
 
 char	*my_strcat(char *dest, char *src)
 {

@@ -1,11 +1,11 @@
 /*
 ** load_map.c for navy in /home/brice/Documents/PSU/PSU_2016_navy
-** 
+**
 ** Made by Brice Lang-Nguyen
 ** Login   <brice.lang-nguyen@epitech.eu>
-** 
+**
 ** Started on  Sat Feb  4 17:28:09 2017 Brice Lang-Nguyen
-** Last update Wed Feb  8 17:04:06 2017 Brice Lang-Nguyen
+** Last update Mon Feb 13 13:54:48 2017 Sadisadou
 */
 
 #include <stdlib.h>
@@ -46,7 +46,7 @@ char	**load_map(char *buff)
 
   map = create_map();
   i = 0;
-  while (buff[i] != '\0')
+  while (i < 32)
     {
       if (buff[i + 2] == buff[i + 5])
 	add_vert(buff[i+2], buff[i+3], buff[i+6], map);

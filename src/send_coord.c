@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Sat Feb  4 15:52:48 2017 Brice Lang-Nguyen
-** Last update Sat Feb 11 22:38:46 2017 Sadisadou
+** Last update Mon Feb 13 15:12:48 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -38,7 +38,7 @@ char*	int_to_bin2(int nb, char* str)
   bin = 0;
   i = 1;
   x = 0;
-  while (nb != 0)
+  while (nb)
     {
       rem = nb % 2;
       nb /= 2;
@@ -47,23 +47,22 @@ char*	int_to_bin2(int nb, char* str)
       x++;
       i *= 10;
     }
+  str[x] = '\0';
   return (str);
 }
 
-char	*int_to_bin(int nb, char *str, int nb2)
+char	*int_to_bin(int nb, char *str, int nb2, int i)
 {
   char*	str2;
   int	rem;
   int	bin;
-  int	i;
   int	j;
 
-  if ((str2 = malloc(sizeof(char) * 6)) == NULL)
+  if ((str2 = malloc(sizeof(char) * 8)) == NULL)
     return (NULL);
   bin = 0;
-  i = 1;
   j = 0;
-  while (nb != 0)
+  while (nb)
     {
       rem = nb % 2;
       nb /= 2;
@@ -72,8 +71,10 @@ char	*int_to_bin(int nb, char *str, int nb2)
       j++;
       i *= 10;
     }
+  str[j] = '\0';
   str2 = int_to_bin2(nb2, str2);
   str = my_strcat(str, str2);
+  free(str2);
   return (str);
 }
 
@@ -83,7 +84,9 @@ char	*bin_crypt(char *s)
   char	*str;
   int	nb;
   int	nb2;
+  int	i;
 
+  i = 1;
   if ((char_is_char(s[0]) || is_low_alpha(s[0])) && char_is_num(s[1]))
     {
       nb = s[1];
@@ -94,9 +97,9 @@ char	*bin_crypt(char *s)
       nb = s[0];
       nb2 = s[1];
     }
-  if ((str = malloc(sizeof(char) * 14)) == NULL)
+  if ((str = malloc(sizeof(char) * 15)) == NULL)
     return (NULL);
-  str = int_to_bin(nb, str, nb2);
+  str = int_to_bin(nb, str, nb2, i);
   str = my_revstr(str);
   return (str);
 }
@@ -118,5 +121,6 @@ int	send_coord(char *coord)
       pause();
       i++;
     }
+  free(str);
   return (0);
 }
