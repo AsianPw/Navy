@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Sat Feb 11 12:23:27 2017 Brice Lang-Nguyen
+** Last update Mon Feb 13 06:54:43 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -66,11 +66,11 @@ void	game1(char *buff)
   sigemptyset(&action.sa_mask);
   action.sa_sigaction = &handleSignal;
   action.sa_flags = SA_SIGINFO;
-  my_printf("waiting for enemy connexion...\n\n");
+  my_printf("waiting for enemy connexion...\n");
   sigaction(SIGUSR1, &action, NULL);
   pause();
   kill(enemy_pid(0, 1), SIGUSR1);
-  my_printf("enemy connected\n\n");
+  my_printf("enemy connected\n\n\n");
   the_game(i, map, enemy_map);
   my_free(map);
   my_free(enemy_map);
@@ -93,7 +93,7 @@ void	game2(char* buff, int pid1)
   kill(pid1, SIGUSR1);
   sigaction(SIGUSR1, &action, NULL);
   pause();
-  my_printf("successfully connected\n\n");
+  my_printf("successfully connected\n\n\n");
   the_game(i, map, enemy_map);
   my_free(map);
   my_free(enemy_map);
