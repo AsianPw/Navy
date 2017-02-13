@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Mon Jan 30 15:58:12 2017 Brice Lang-Nguyen
-** Last update Fri Feb  3 17:57:50 2017 Sadisadou
+** Last update Mon Feb 13 15:06:17 2017 Brice Lang-Nguyen
 */
 
 #include "navy.h"
@@ -20,7 +20,7 @@ int	char_is_num(char c)
 
 int	char_is_char(char c)
 {
-  if ((c > 64 && c <= 72))
+  if ((c > 64 && c <= 72) || is_low_alpha(c))
     return (true);
   return (false);
 }
@@ -32,6 +32,29 @@ int	is_low_alpha(char c)
     return (true);
   return (false);
 }
+
+int	size_is_ok(char *buff)
+{
+  int	i;
+
+  i = 0;
+  while (i < 32)
+    {
+      i += 8;
+      printf("%c %c%c %c%c\n", buff[i-8], buff[i-6], buff[i-5], buff[i-3], buff[i-2]);
+      if (buff[i-3] == buff[i-6])
+	{
+	  if (char_is_num(buff[i-2]) && char_is_num(buff[i-5]))
+	    {
+	      if (buff[i-8] != (buff[i-2] - buff[i-5] + '0' + 1))
+		return (false);
+	    }
+	}
+      //else if (buff[i] ==  buff[i-3])
+    }
+  return (true);
+}
+
 
 int	check_map(char *buffer)
 {
@@ -48,5 +71,7 @@ int	check_map(char *buffer)
 	return (false);
       i++;
     }
+  if (!size_is_ok(buffer))
+    return (false);
   return (true);
 }
