@@ -5,10 +5,22 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 14:40:53 2017 Sadisadou
-** Last update Mon Feb 13 07:00:51 2017 Sadisadou
+** Last update Tue Feb 14 14:45:23 2017 Sadisadou
 */
 
 #include "navy.h"
+
+int	my_bool(int x, int state)
+{
+  static int i = 0;
+
+  if (state == 0)
+    i = x;
+  if (state == 1)
+    return (i);
+  return (0);
+}
+
 
 int	is_valid(char *entry)
 {
@@ -69,21 +81,6 @@ void	map(char **map)
     }
   my_printf("\n");
 }
-
-/* void	enemy_map(char **map) */
-/* { */
-/*   int   i; */
-
-/*   i = 0; */
-/*   my_printf(" |A B C D E F G H\n-+---------------\n"); */
-/*   while (i < 8) */
-/*     { */
-/*       my_printf("%d|%s\n", i+1, map[i]); */
-/*       i++; */
-/*     } */
-/*   my_printf("\n"); */
-/* } */
-
 
 void	aff1(char **map_l, char** map_e)
 {

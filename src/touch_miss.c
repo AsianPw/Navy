@@ -5,13 +5,13 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 13:25:37 2017 Sadisadou
-** Last update Sun Feb 12 18:21:22 2017 Sadisadou
+** Last update Tue Feb 14 14:45:44 2017 Sadisadou
 */
 
 #include <signal.h>
 #include "navy.h"
 
-void	attacker1(int state, char** map, char **enemy_map)
+int	attacker1(int state, char** map, char **enemy_map)
 {
   char		*s;
   t_coord	*attack;
@@ -37,9 +37,10 @@ void	attacker1(int state, char** map, char **enemy_map)
 	}
       free(s);
     }
+  return (0);
 }
 
-void	attacker2(int state, char **map, char** enemy_map)
+int	attacker2(int state, char **map, char** enemy_map)
 {
   char		*s;
   t_coord	*attack;
@@ -64,4 +65,5 @@ void	attacker2(int state, char **map, char** enemy_map)
 	}
       free(s);
     }
+  return (0);
 }

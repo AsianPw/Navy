@@ -5,23 +5,12 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Fri Feb  3 19:12:44 2017 Sadisadou
-** Last update Sun Feb 12 18:51:07 2017 Sadisadou
+** Last update Tue Feb 14 14:44:56 2017 Sadisadou
 */
 
 #include "navy.h"
 
-int	my_bool(int x, int state)
-{
-  static int i = 0;
-
-  if (state == 0)
-    i = x;
-  if (state == 1)
-    return (i);
-  return (0);
-}
-
-void    handletouch(int sig, siginfo_t* info, void* context)
+void	handletouch(int sig, siginfo_t* info, void* context)
 {
   if (sig == SIGUSR1)
     my_bool(0, 0);
@@ -77,6 +66,7 @@ void	check(char **map, int x, int y)
       my_printf("%c%c: missed\n\n", x, y);
       kill(enemy_pid(0, 1), SIGUSR1);
     }
+  usleep(250);
 }
 
 int	the_map(char **map)
@@ -118,8 +108,8 @@ int	map_pos(char** map, t_coord *attack)
 	  if (attack->y == x && attack->x == y)
 	    {
 	      check(map, x, y);
-	      if (the_map(map) == 0)
-		return (1);
+	      free(attack);
+	      /*the_map(map);*/
 	      return (0);
 	    }
 	  x1++;

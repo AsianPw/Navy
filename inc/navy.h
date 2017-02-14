@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Mon Jan 30 12:18:17 2017 Brice Lang-Nguyen
-** Last update Sun Feb 12 18:05:49 2017 Sadisadou
+** Last update Tue Feb 14 13:33:39 2017 Sadisadou
 */
 
 #ifndef NAVY_H_
@@ -32,8 +32,8 @@ int	check_map(char*);
 void	my_help();
 int	player1(int);
 int	player2(int, char*);
-void	game1(char*);
-void	game2(char*, int);
+int	game1(char*);
+int	game2(char*, int);
 int	openerr(int);
 char**	create_map();
 void	map(char **);
@@ -44,8 +44,8 @@ void	aff1(char **, char**);
 int	char_is_num(char);
 int	char_is_char(char);
 int	is_low_alpha(char);
-void	attacker1(int, char**, char**);
-void	attacker2(int, char**, char**);
+int	attacker1(int, char**, char**);
+int	attacker2(int, char**, char**);
 int	is_valid(char*);
 int	enemy_pid(int, int);
 t_coord	*receive_coord();

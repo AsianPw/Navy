@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Mon Jan 30 12:32:49 2017 Sadisadou
-** Last update Mon Feb 13 13:53:27 2017 Sadisadou
+** Last update Tue Feb 14 13:12:23 2017 Sadisadou
 */
 
 #include <unistd.h>
@@ -37,7 +37,11 @@ int	player1(int fd)
     }
   buff[31] = '\0';
   if (check_map(buff))
-      game1(buff);
+    if (game1(buff) == 1)
+      {
+	free(buff);
+	return (1);
+      }
   else
     {
       my_strerror("Error with the pos file.\n");
@@ -62,7 +66,11 @@ int	player2(int fd, char* pid)
     }
   buff[31] = '\0';
   if (check_map(buff))
-    game2(buff, pid1);
+    if (game2(buff, pid1) == 1)
+      {
+	free(buff);
+	return (1);
+      }
   else
     {
       my_strerror("Error with the pos file.\n");
@@ -82,20 +90,21 @@ int	main(int ac, char** av)
     {
       if (openerr(fd = open(av[1], O_RDONLY)) == -1)
 	return (84);
-      else
-	player1(fd);
+      if (player1(fd) == 1)
+	return (1);
     }
   else if (ac == 3 && my_str_isnum(av[1]))
     {
       if (openerr(fd = open(av[2], O_RDONLY)) == -1)
 	return (84);
-      else
-	player2(fd, av[1]);
+      if (player2(fd, av[1]) == 1)
+	return (1);
     }
   else
     {
       my_strerror("Wrong numbers/types of params.\n");
       return (84);
     }
-    return (0);
+  my_printf("I won\n");
+  return (0);
 }

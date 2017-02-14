@@ -5,28 +5,11 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Sat Feb  4 15:52:48 2017 Brice Lang-Nguyen
-** Last update Mon Feb 13 15:12:48 2017 Sadisadou
+** Last update Tue Feb 14 14:41:27 2017 Sadisadou
 */
 
 #include <signal.h>
 #include "navy.h"
-
-
-/* int	char_to_int(char *str) */
-/* { */
-/*   int	i; */
-/*   int	res; */
-
-/*   i = 0; */
-/*   res = 0; */
-/*   while (str[i] != '\0') */
-/*     { */
-/*       res += str[i]; */
-/*       i++; */
-/*     } */
-/*   res -= 1; */
-/*   return (res); */
-/* } */
 
 char*	int_to_bin2(int nb, char* str)
 {
