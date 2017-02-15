@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Mon Jan 30 12:18:17 2017 Brice Lang-Nguyen
-** Last update Tue Feb 14 13:33:39 2017 Sadisadou
+** Last update Wed Feb 15 15:36:46 2017 Brice Lang-Nguyen
 */
 
 #ifndef NAVY_H_
@@ -52,4 +52,5 @@ t_coord	*receive_coord();
 int	send_coord(char*);
 char	**load_map(char*);
 int	map_pos(char**, t_coord*);
+int	same_size(char *buffer);
 #endif

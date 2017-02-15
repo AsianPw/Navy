@@ -5,7 +5,7 @@
 ## Login   <brice.lang-nguyen@epitech.eu>
 ##
 ## Started on  Mon Jan 30 12:15:14 2017 Brice Lang-Nguyen
-## Last update Wed Feb  8 12:33:52 2017 Brice Lang-Nguyen
+## Last update Wed Feb 15 15:40:12 2017 Brice Lang-Nguyen
 ##
 
 DEBUG	=	yes
@@ -24,6 +24,7 @@ SRCS	=	main.c\
 		src/touch_miss.c\
 		src/core.c\
 		src/map.c \
+		src/same_size.c	\
 		src/send_coord.c \
 		src/receive_coord.c
 
