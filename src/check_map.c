@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Mon Jan 30 15:58:12 2017 Brice Lang-Nguyen
-** Last update Mon Feb 13 19:05:08 2017 Brice Lang-Nguyen
+** Last update Wed Feb 15 15:31:24 2017 Sadisadou
 */
 
 #include "navy.h"
@@ -56,7 +56,6 @@ int	size_is_ok(char *buff)
     }
   return (true);
 }
-
 
 int	check_map(char *buffer)
 {

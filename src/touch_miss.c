@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 13:25:37 2017 Sadisadou
-** Last update Tue Feb 14 15:42:14 2017 Sadisadou
+** Last update Wed Feb 15 15:20:51 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -20,6 +20,8 @@ int	attacker1(int state, char** map, char **enemy_map)
     {
       my_printf("attack:  ");
       s = get_next_line(0);
+      if (s[0] == 0)
+	return (2);
       if (!is_valid(s))
 	my_printf("wrong position\n");
       else
