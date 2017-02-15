@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Fri Feb  3 19:12:44 2017 Sadisadou
-** Last update Tue Feb 14 14:44:56 2017 Sadisadou
+** Last update Tue Feb 14 15:36:52 2017 Sadisadou
 */
 
 #include "navy.h"
@@ -21,10 +21,11 @@ void	handletouch(int sig, siginfo_t* info, void* context)
 }
 
 
-void	the_enemy(char** map, char* coord)
+int	the_enemy(char** map, char* coord)
 {
   struct sigaction	action;
   int			i;
+  static int x = 0;
 
   action.sa_sigaction = &handletouch;
   action.sa_flags = SA_SIGINFO;
@@ -42,7 +43,9 @@ void	the_enemy(char** map, char* coord)
     {
       map[coord[1] - 49][(coord[0] - 65) * 2] = 'x';
       my_printf("hit\n\n");
+      x++;
     }
+  return (x);
 }
 
 void	check(char **map, int x, int y)
