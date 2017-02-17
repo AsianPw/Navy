@@ -5,14 +5,13 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 ** 
 ** Started on  Fri Jan 27 18:36:20 2017 Brice Lang-Nguyen
-** Last update Sun Jan 29 01:47:34 2017 Brice Lang-Nguyen
+** Last update Fri Feb 17 15:55:28 2017 Brice Lang-Nguyen
 */
 
 #include "lib.h"
 
 void	my_putchar(char c)
 {
-  if (write(1, &c, 1) == -1)
-    return ;
+  write(1, &c, 1);
   return ;
 }

@@ -5,7 +5,7 @@
 ## Login   <brice.lang-nguyen@epitech.eu>
 ##
 ## Started on  Fri Jan 27 20:40:45 2017 Brice Lang-Nguyen
-## Last update Mon Jan 30 20:11:09 2017 Sadisadou
+## Last update Fri Feb 17 15:58:31 2017 Brice Lang-Nguyen
 ##
 
 LIST	=	yes
@@ -16,8 +16,7 @@ CC	= 	gcc
 
 RM	= 	rm -f
 
-SRCS	=	./src/error.c	\
-		./src/my_getnbr.c \
+SRCS	=	./src/my_getnbr.c \
 	  	./src/my_isneg.c \
 	  	./src/my_power_rec.c \
 	  	./src/my_put_nbr.c \
