@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Sun Feb 19 21:55:34 2017 Sadisadou
+** Last update Sun Feb 19 21:57:32 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -43,13 +43,13 @@ int	the_game(int i, char **map, char **enemy_map)
       if (i == 0)
 	{
 	  if (attacker1(state, map, enemy_map, s) == 2)
-	    return (84);
+	    return (0);
 	  i = 0;
 	}
       else
 	{
 	  if (attacker2(state, map, enemy_map, s) == 2)
-	    return (84);
+	    return (0);
 	  i = 1;
 	}
     }
