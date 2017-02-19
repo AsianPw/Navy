@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Mon Jan 30 12:18:17 2017 Brice Lang-Nguyen
-** Last update Wed Feb 15 15:36:46 2017 Brice Lang-Nguyen
+** Last update Sun Feb 19 20:53:04 2017 Brice Lang-Nguyen
 */
 
 #ifndef NAVY_H_
@@ -53,4 +53,6 @@ int	send_coord(char*);
 char	**load_map(char*);
 int	map_pos(char**, t_coord*);
 int	same_size(char *buffer);
+int	my_bool(int x, int state);
+int	the_enemy(char**, char*);
 #endif

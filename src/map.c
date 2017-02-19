@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Fri Feb  3 19:12:44 2017 Sadisadou
-** Last update Tue Feb 14 15:36:52 2017 Sadisadou
+** Last update Sun Feb 19 20:53:36 2017 Brice Lang-Nguyen
 */
 
 #include "navy.h"
@@ -119,4 +119,5 @@ int	map_pos(char** map, t_coord *attack)
 	}
       y1++;
     }
+  return (0);
 }
