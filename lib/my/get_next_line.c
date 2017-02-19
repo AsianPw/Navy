@@ -5,7 +5,7 @@
 ** Login   <sadisadou@epitech.net>
 **
 ** Started on  Mon Jan  2 13:09:31 2017 Bastien Guillaumat
-** Last update Thu Jan 19 19:03:45 2017 Sadisadou
+** Last update Sun Feb 19 21:39:31 2017 Sadisadou
 */
 
 #include "get_next_line.h"
@@ -35,7 +35,10 @@ char*	get(int	i, int n, char* buff, char* final)
       final[n] = buff[n];
       n++;
     }
-  final[n] = '\0';
+  if (buff[0] != 10 && i == 0)
+    final = NULL;
+  else
+    final[n] = '\0';
   return (final);
 }
 
@@ -43,7 +46,7 @@ char*	get_next_line(const int fd)
 {
   static char	*buff;
   char		*final;
-  int		i;	
+  int		i;
   int		ssread;
   int		n;
 
