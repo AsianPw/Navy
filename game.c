@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Sun Feb 19 21:57:32 2017 Sadisadou
+** Last update Sun Feb 19 23:02:30 2017 Brice Lang-Nguyen
 */
 
 #include <signal.h>
@@ -40,6 +40,7 @@ int	the_game(int i, char **map, char **enemy_map)
     {
       aff1(map, enemy_map);
       state = 1;
+      s = NULL;
       if (i == 0)
 	{
 	  if (attacker1(state, map, enemy_map, s) == 2)
