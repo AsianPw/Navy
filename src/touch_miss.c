@@ -5,15 +5,14 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Thu Feb  2 13:25:37 2017 Sadisadou
-** Last update Sun Feb 19 21:30:36 2017 Sadisadou
+** Last update Sun Feb 19 21:55:27 2017 Sadisadou
 */
 
 #include <signal.h>
 #include "navy.h"
 
-int	attacker1(int state, char** map, char **enemy_map)
+int	attacker1(int state, char** map, char **enemy_map, char* s)
 {
-  char		*s;
   t_coord	*attack;
 
   while (state)
@@ -41,9 +40,8 @@ int	attacker1(int state, char** map, char **enemy_map)
   return (0);
 }
 
-int	attacker2(int state, char **map, char** enemy_map)
+int	attacker2(int state, char **map, char** enemy_map, char* s)
 {
-  char		*s;
   t_coord	*attack;
 
   my_printf("waiting for enemy's attack...\n");

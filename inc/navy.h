@@ -5,7 +5,7 @@
 ** Login   <brice.lang-nguyen@epitech.eu>
 **
 ** Started on  Mon Jan 30 12:18:17 2017 Brice Lang-Nguyen
-** Last update Sun Feb 19 20:53:04 2017 Brice Lang-Nguyen
+** Last update Sun Feb 19 21:54:56 2017 Sadisadou
 */
 
 #ifndef NAVY_H_
@@ -44,8 +44,8 @@ void	aff1(char **, char**);
 int	char_is_num(char);
 int	char_is_char(char);
 int	is_low_alpha(char);
-int	attacker1(int, char**, char**);
-int	attacker2(int, char**, char**);
+int	attacker1(int, char**, char**, char*);
+int	attacker2(int, char**, char**, char*);
 int	is_valid(char*);
 int	enemy_pid(int, int);
 t_coord	*receive_coord();

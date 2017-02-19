@@ -5,7 +5,7 @@
 ** Login   <bastien.guillaumat@epitech.eu@epitech.net>
 **
 ** Started on  Tue Jan 31 14:46:52 2017 Sadisadou
-** Last update Wed Feb 15 15:21:58 2017 Sadisadou
+** Last update Sun Feb 19 21:55:34 2017 Sadisadou
 */
 
 #include <signal.h>
@@ -34,6 +34,7 @@ void	handleSignal(int sig, siginfo_t* info, void* context)
 int	the_game(int i, char **map, char **enemy_map)
 {
   int	state;
+  char	*s;
 
   while (1)
     {
@@ -41,13 +42,13 @@ int	the_game(int i, char **map, char **enemy_map)
       state = 1;
       if (i == 0)
 	{
-	  if (attacker1(state, map, enemy_map) == 2)
+	  if (attacker1(state, map, enemy_map, s) == 2)
 	    return (84);
 	  i = 0;
 	}
       else
 	{
-	  if (attacker2(state, map, enemy_map) == 2)
+	  if (attacker2(state, map, enemy_map, s) == 2)
 	    return (84);
 	  i = 1;
 	}
