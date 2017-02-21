@@ -5,10 +5,10 @@
 ## Login   <brice.lang-nguyen@epitech.eu>
 ##
 ## Started on  Mon Jan 30 12:15:14 2017 Brice Lang-Nguyen
-## Last update Wed Feb 15 15:40:12 2017 Brice Lang-Nguyen
+## Last update Tue Feb 21 15:46:08 2017 Brice Lang-Nguyen
 ##
 
-DEBUG	=	yes
+DEBUG	=	no
 
 NAME	=	navy
 
@@ -37,7 +37,7 @@ CFLAGS = 	-I./inc/
 ifeq ($(DEBUG), yes)
 	CFLAGS += 	-g -Wall -Wextra
 else
-	CFLAGS += 	-Wall -Wextra -Werror
+	CFLAGS += 	-W -Wall -Wextra -Werror
 endif
 
 all: $(NAME)
